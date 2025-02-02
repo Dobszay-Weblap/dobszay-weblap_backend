@@ -13,8 +13,8 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, HasApiTokens;
 
-public function isAdmin()  {
-        return $this->role === 0;
+    public function isAdmin()  {
+        return $this->jogosultsagi_szint === 'admin';
     }
 
     /**
