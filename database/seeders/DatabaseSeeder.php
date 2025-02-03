@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\familydata;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -21,6 +22,9 @@ class DatabaseSeeder extends Seeder
             'password' => '123456',
             'jogosultsagi_szint' => 'felhasznalo',
         ]);
+
+        familydata::factory(10)->create();
+
 
     }
 }
