@@ -87,31 +87,29 @@ class UserController extends Controller
     
     //Bejelentkezés
     public function login(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required|string',
-        ]);
+{
+    $validator = Validator::make($request->all(), [
+        'email' => 'required|email',
+        'password' => 'required|string',
+    ]);
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
-
-        if (Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->password,
-        ])) {
-
-            $user = Auth::user();
-            return response()->json([
-                'message' => 'Sikeres bejelentkezés!',
-                'user' => $user,
-                'token' => $user->createToken('API Token')->plainTextToken
-            ]);
-        }
-
-        return response()->json(['message' => 'Hibás email vagy jelszó!'], 401);
+    if ($validator->fails()) {
+        return response()->json(['errors' => $validator->errors()], 400);
     }
+
+    if (Auth::attempt([
+        'email' => $request->email,
+        'password' => $request->password,
+    ])) {
+        $user = Auth::user();
+        return response()->json([
+            'message' => 'Sikeres bejelentkezés!',
+            'user' => $user,
+            'token' => $user->createToken('API Token')->plainTextToken
+        ]);
+    }
+}
+
     //Profil megtekintés
     public function profile()
     {
