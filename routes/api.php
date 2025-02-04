@@ -8,12 +8,12 @@ use App\Http\Middleware\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\KorabbiEvController;
 
 
 use App\Http\Controllers\FoglaltsagController;
 
 
-// routes/api.php
 Route::middleware(['auth:sanctum'])
      ->get('/users', [UserController::class, 'index']);
 
@@ -26,6 +26,15 @@ Route::apiResource('/csaladi-adatok', FamilydataController::class);
 Route::get('/foglaltsag', [FoglaltsagController::class, 'getFoglaltsag']);
 
 Route::post('/foglaltsag/hozzad', [FoglaltsagController::class, 'hozzaadLako']);
+
+
+Route::get('/korabbiev/{year}', [KorabbiEvController::class, 'show']);
+
+
+Route::get('/test', function () {
+    return response()->json(['message' => 'A backend működik!']);
+});
+
 
 
 Route::get('rooms', [RoomController::class, 'index']);
