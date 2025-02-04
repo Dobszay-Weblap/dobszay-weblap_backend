@@ -27,9 +27,11 @@ class FamilyData extends Model
         'becenev_sor',
         'bankszamla',
         'revolut_id',
+        'ki_ki',
         'naptar',
         'elso_generacio',
         'unoka_generacio',
         'dedunoka_generacio',
+        'szin_kod'
     ];
 }

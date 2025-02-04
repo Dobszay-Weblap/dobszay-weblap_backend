@@ -22,8 +22,8 @@ class FamilydataFactory extends Factory
             'vonalas_telefon' => $this->faker->phoneNumber(),
             'cim' => $this->faker->address(),
             'szuletesi_ev' => $this->faker->year(),
-            'szulinap' => $this->faker->date(),
-            'nevnap' => $this->faker->date(),
+            'szulinap' => $this->faker->unique()->randomNumber(),
+            'nevnap' => $this->faker->unique()->randomNumber(),
             'email' => $this->faker->unique()->safeEmail(),
             'skype' => $this->faker->unique()->userName(),
             'csaladsorszam' => $this->faker->randomNumber(),
@@ -32,10 +32,22 @@ class FamilydataFactory extends Factory
             'becenev_sor' => $this->faker->unique()->word(),
             'bankszamla' => $this->faker->unique()->iban(),
             'revolut_id' => $this->faker->unique()->uuid(),
+            'ki_ki' => $this->faker->unique()->word(),
             'naptar' => $this->faker->numberBetween(0, 1),
             'elso_generacio' => $this->faker->optional()->numberBetween(0, 1),
             'unoka_generacio' => $this->faker->optional()->numberBetween(0, 1),
             'dedunoka_generacio' => $this->faker->optional()->numberBetween(0, 1),
+            'szin_kod' => function () {
+        $csaladSzinek = [
+            1 => '#ffcccc',
+            2 => '#ccffcc',
+            3 => '#ccccff',
+            4 => '#ffffcc',
+        ];
+
+        $csaladsorszam = rand(1, 4); // Például 1-4 között adunk egy családot
+        return $csaladSzinek[$csaladsorszam] ?? '#f0f0f0'; // Alapértelmezett szín
+    },
         ];
     }
 }

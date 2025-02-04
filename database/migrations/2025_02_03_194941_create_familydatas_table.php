@@ -17,22 +17,26 @@ return new class extends Migration
             $table->string('mobil_telefonszam')->nullable();
             $table->string('vonalas_telefon')->nullable();
             $table->string('cim')->nullable();
-            $table->year('szuletesi_ev')->nullable();
-            $table->date('szulinap')->nullable();
-            $table->date('nevnap')->nullable();
+            $table->integer('szuletesi_ev')->nullable();
+            $table->string('szulinap')->nullable();
+            $table->string('nevnap')->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('skype')->unique()->nullable();
             $table->integer('csaladsorszam')->nullable();
-            $table->string('matebazsi_kod')->unique()->nullable();
+            $table->integer('matebazsi_kod')->unique()->nullable();
             $table->integer('sor_szamlalo');
-            $table->string('becenev_sor')->unique()->nullable();
-            $table->string('bankszamla')->unique()->nullable();
-            $table->string('revolut_id')->unique()->nullable();
-            $table->integer('naptar');
-            $table->integer('elso_generacio')->nullable();;
-            $table->integer('unoka_generacio')->nullable();;
-            $table->integer('dedunoka_generacio')->nullable();;
+            $table->string('becenev_sor')->nullable();
+            $table->string('bankszamla')->nullable();
+            $table->string('revolut_id')->nullable();
+            $table->string('ki_ki')->nullable();
+            $table->integer('naptar')->nullable();
+            $table->integer('elso_generacio')->nullable();
+            $table->integer('unoka_generacio')->nullable();
+            $table->integer('dedunoka_generacio')->nullable();
+            $table->string('szin_kod')->nullable();
             $table->timestamps();
+
+    
         });
     }
 
