@@ -7,6 +7,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoomController;
+
+
+use App\Http\Controllers\FoglaltsagController;
+
 
 // routes/api.php
 Route::middleware(['auth:sanctum'])
@@ -17,6 +22,19 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     });
 
 Route::apiResource('/csaladi-adatok', FamilydataController::class);
+
+Route::get('/foglaltsag', [FoglaltsagController::class, 'getFoglaltsag']);
+
+
+// routes/api.php
+
+
+Route::get('rooms', [RoomController::class, 'index']);
+Route::get('rooms/{id}', [RoomController::class, 'show']);
+Route::post('rooms', [RoomController::class, 'store']);
+Route::put('rooms/{id}', [RoomController::class, 'update']);
+Route::delete('rooms/{id}', [RoomController::class, 'destroy']);
+
 
 
 
