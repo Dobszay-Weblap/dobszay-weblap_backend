@@ -205,6 +205,28 @@ class DatabaseSeeder extends Seeder
             'unoka_generacio' => 1,
             'dedunoka_generacio' => null
         ]);
+        familydata::factory()->create([
+            'nev' => 'Szabó ',
+            'mobil_telefonszam' => '+36 20 353 0331',
+            'vonalas_telefon' => '',
+            'cim' => '1037 Budapest,Tarhos utca 48.',
+            'szuletesi_ev' => 2002,
+            'szulinap' => '10.13',
+            'nevnap' => '02.06',
+            'email' => 'kdka@gmail.com',
+            'skype' => 'koka',
+            'csaladsorszam' => 7,
+            'matebazsi_kod' => 80,
+            'sor_szamlalo' => 10,
+            'becenev_sor' => '',
+            'bankszamla' => '',
+            'revolut_id' => '',
+            'ki_ki' => 'unoka',
+            'naptar' => null,
+            'elso_generacio' => null,
+            'unoka_generacio' => 1,
+            'dedunoka_generacio' => null
+        ]);
         Room::factory()->create([
             'szoba_id' => 'F1/1',
             'nev' => '1. Faház',
