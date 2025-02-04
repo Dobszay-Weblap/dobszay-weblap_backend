@@ -9,11 +9,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // routes/api.php
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user(); // Visszaadjuk a bejelentkezett felhasználó adatokat
-});
+Route::middleware(['auth:sanctum'])
+     ->get('/users', [UserController::class, 'index']);
 
-
+Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+        return $request->user();
+    });
 
 Route::apiResource('/csaladi-adatok', FamilydataController::class);
 
