@@ -25,8 +25,7 @@ Route::apiResource('/csaladi-adatok', FamilydataController::class);
 
 Route::get('/foglaltsag', [FoglaltsagController::class, 'getFoglaltsag']);
 
-
-// routes/api.php
+Route::post('/foglaltsag/hozzad', [FoglaltsagController::class, 'hozzaadLako']);
 
 
 Route::get('rooms', [RoomController::class, 'index']);

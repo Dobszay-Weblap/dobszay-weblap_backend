@@ -7,20 +7,32 @@ use Illuminate\Http\Request;
 
 class FoglaltsagController extends Controller
 {
-    public function getFoglaltsag()
-{
-    // Lekérjük az összes szobát
-    $szobak = Room::all();
+    public function hozzaadLako(Request $request)
+    {
+        $request->validate([
+            'szoba' => 'required|string',
+            'lako' => 'required|string'
+        ]);
 
-    // Foglaltság meghatározása
-    $foglaltsag = $szobak->mapWithKeys(function ($szoba) {
-        // A lakók számát összehasonlítjuk a max férőhellyel
-        $foglalt = count($szoba->lakok) >= $szoba->max;
-        return [$szoba->nev => $foglalt]; // Visszaadja a szoba nevét és foglaltságát
-    });
+        // Megkeressük a szobát
+        $szoba = Room::where('nev', $request->szoba)->first();
 
-    // Visszaküldjük a foglaltsági adatokat JSON formátumban
-    return response()->json($foglaltsag);
-}
+        if (!$szoba) {
+            return response()->json(['error' => 'A szoba nem található'], 404);
+        }
+
+        // Ha tele van, ne engedjük hozzáadni
+        if ($szoba->tele) {
+            return response()->json(['error' => 'Ez a szoba tele van!'], 400);
+        }
+
+        // Hozzáadjuk az új lakót
+        $szoba->lakok = json_decode($szoba->lakok, true) ?? []; // Ha nincs lakó, hozzunk létre egy üres tömböt
+        $szoba->lakok[] = $request->lako;
+        $szoba->lakok = json_encode($szoba->lakok);
+        $szoba->save();
+
+        return response()->json($szoba);
+    }
 
 }

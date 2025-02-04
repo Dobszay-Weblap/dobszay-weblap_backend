@@ -19,6 +19,7 @@ class Room extends Model
 
     protected $casts = [
         'lakok' => 'array', // A lakók adatainak JSON típusú tárolása
+        'tele' => 'boolean'
     ];
 
 
