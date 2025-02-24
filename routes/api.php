@@ -21,6 +21,9 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
         return $request->user();
     });
 
+    Route::get('/insert-test-data', [KorabbiEvController::class, 'insertTestData']);
+
+
 Route::apiResource('/csaladi-adatok', FamilydataController::class);
 
 Route::get('/foglaltsag', [FoglaltsagController::class, 'getFoglaltsag']);
@@ -29,6 +32,8 @@ Route::post('/foglaltsag/hozzad', [FoglaltsagController::class, 'hozzaadLako']);
 
 
 Route::get('/korabbiev/{year}', [KorabbiEvController::class, 'show']);
+// A lekérdezés a getDataByYear metódust hívja meg.
+Route::get('/korabbiev/{year}', [KorabbiEvController::class, 'getDataByYear']);
 
 
 Route::get('/test', function () {
