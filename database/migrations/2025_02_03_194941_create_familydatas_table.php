@@ -33,7 +33,8 @@ return new class extends Migration
             $table->integer('elso_generacio')->nullable();
             $table->integer('unoka_generacio')->nullable();
             $table->integer('dedunoka_generacio')->nullable();
-            $table->string('szin_kod')->nullable();
+            $table->unsignedBigInteger('szulo_id')->nullable();
+            $table->foreign('szulo_id')->references('id')->on('familydatas')->onDelete('cascade');
             $table->timestamps();
 
     
@@ -45,6 +46,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('familydatas');
+        Schema::table('familydatas', function (Blueprint $table) {
+            $table->dropForeign(['szulo_id']);
+            $table->dropColumn('szulo_id');
+        });
     }
 };

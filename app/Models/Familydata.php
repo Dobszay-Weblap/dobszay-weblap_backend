@@ -32,6 +32,16 @@ class FamilyData extends Model
         'elso_generacio',
         'unoka_generacio',
         'dedunoka_generacio',
-        'szin_kod'
+        'szulo_id',
     ];
+
+    public function szulo()
+    {
+        return $this->belongsTo(FamilyData::class, 'szulo_id');
+    }
+
+    public function gyerekek()
+    {
+        return $this->hasMany(FamilyData::class, 'szulo_id');
+    }
 }

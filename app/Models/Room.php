@@ -12,14 +12,14 @@ class Room extends Model
 
     protected $fillable = [
         'szoba_id',
+        'fahaz_id',
         'nev',
         'max',
-        'lakok',
+        'lakok'
     ];
 
     protected $casts = [
         'lakok' => 'array', // A lakók adatainak JSON típusú tárolása
-        'tele' => 'boolean'
     ];
 
 

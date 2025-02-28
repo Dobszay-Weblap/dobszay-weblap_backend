@@ -21,11 +21,19 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
         return $request->user();
     });
 
-Route::apiResource('/csaladi-adatok', FamilydataController::class);
 
-Route::get('/foglaltsag', [FoglaltsagController::class, 'getFoglaltsag']);
+    Route::get('/csaladi-adatok', [FamilyDataController::class, 'index']);
+    Route::post('/csaladi-adatok', [FamilyDataController::class, 'store']);
+    Route::get('/csaladi-adatok/{id}', [FamilyDataController::class, 'show']);
+    Route::put('/csaladi-adatok/{id}', [FamilyDataController::class, 'update']);
+    Route::delete('/csaladi-adatok/{id}', [FamilyDataController::class, 'destroy']);
 
-Route::post('/foglaltsag/hozzad', [FoglaltsagController::class, 'hozzaadLako']);
+    Route::get('/csaladi-adatok/{id}/gyerekek', [FamilyDataController::class, 'children']);
+
+    
+Route::get('/foglaltsag', [FoglaltsagController::class, 'index']);
+Route::post('/foglaltsag/hozzad', [FoglaltsagController::class, 'hozzad'])->middleware('auth:sanctum');
+
 
 
 Route::get('/korabbiev/{year}', [KorabbiEvController::class, 'show']);
@@ -34,6 +42,9 @@ Route::get('/korabbiev/{year}', [KorabbiEvController::class, 'show']);
 Route::get('/test', function () {
     return response()->json(['message' => 'A backend működik!']);
 });
+
+Route::get('/csaladi-adatok/{id}/gyerekek', [FamilyDataController::class, 'children']);
+
 
 
 

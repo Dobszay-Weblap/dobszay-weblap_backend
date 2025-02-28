@@ -14,11 +14,15 @@ class RoomFactory extends Factory
 
     public function definition()
     {
+        $szobaId = $this->faker->randomElement(['F1/1', 'F1/2', 'F2/1', 'F2/2']);
+        $fahazId = explode('/', $szobaId)[0]; // F1/1 -> F1
+
         return [
-            'szoba_id' => $this->faker->numberBetween(1, 5), 
-            'nev' => $this->faker->word(),
-            'max' => $this->faker->numberBetween(1, 5),
-            'lakok' => json_encode($this->faker->words(3)), // Lakók mező generálása
+            'szoba_id' => $szobaId,
+            'fahaz_id' => $fahazId,
+            'nev' => $this->faker->randomElement(['1. Faház', '2. Faház']),
+            'max' => $this->faker->numberBetween(1, 4),
+            'lakok' => json_encode($this->faker->randomElements(['Eszter', 'Dávid', 'Anna', 'Sára'], rand(1, 3)))
         ];
     }
 }

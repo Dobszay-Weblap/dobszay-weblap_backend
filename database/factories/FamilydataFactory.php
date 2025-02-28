@@ -37,17 +37,7 @@ class FamilydataFactory extends Factory
             'elso_generacio' => $this->faker->optional()->numberBetween(0, 1),
             'unoka_generacio' => $this->faker->optional()->numberBetween(0, 1),
             'dedunoka_generacio' => $this->faker->optional()->numberBetween(0, 1),
-            'szin_kod' => function () {
-        $csaladSzinek = [
-            1 => '#ffcccc',
-            2 => '#ccffcc',
-            3 => '#ccccff',
-            4 => '#ffffcc',
-        ];
 
-        $csaladsorszam = rand(1, 4); // Például 1-4 között adunk egy családot
-        return $csaladSzinek[$csaladsorszam] ?? '#f0f0f0'; // Alapértelmezett szín
-    },
         ];
     }
 }

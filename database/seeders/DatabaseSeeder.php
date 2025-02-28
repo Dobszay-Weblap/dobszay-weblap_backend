@@ -24,6 +24,13 @@ class DatabaseSeeder extends Seeder
             'jogosultsagi_szint' => 'felhasznalo',
         ]);
 
+        User::factory()->create([
+            'name' => 'Test Admin',
+            'email' => 'dobszay@gmail.hu',
+            'password' => '1234567',
+            'jogosultsagi_szint' => 'admin',
+        ]);
+
         //familydata::factory(10)->create();
         familydata::factory()->create([
             'nev' => 'Jóha Dorka Mária',
@@ -35,7 +42,7 @@ class DatabaseSeeder extends Seeder
             'nevnap' => '02.06',
             'email' => 'ldorka@gmail.com',
             'skype' => 'ldorka',
-            'csaladsorszam' => 0,
+            'csaladsorszam' => 2,
             'matebazsi_kod' => 2,
             'sor_szamlalo' => 1,
             'becenev_sor' => '',
@@ -45,7 +52,8 @@ class DatabaseSeeder extends Seeder
             'naptar' => null,
             'elso_generacio' => null,
             'unoka_generacio' => 1,
-            'dedunoka_generacio' => null
+            'dedunoka_generacio' => null,
+            'szulo_id' =>  null
         ]);
 
         familydata::factory()->create([
@@ -68,7 +76,8 @@ class DatabaseSeeder extends Seeder
             'naptar' => null,
             'elso_generacio' => null,
             'unoka_generacio' => 1,
-            'dedunoka_generacio' => null
+            'dedunoka_generacio' => null,
+            'szulo_id' =>  null
         ]);
 
         familydata::factory()->create([
@@ -91,7 +100,8 @@ class DatabaseSeeder extends Seeder
             'naptar' => null,
             'elso_generacio' => null,
             'unoka_generacio' => 1,
-            'dedunoka_generacio' => null
+            'dedunoka_generacio' => null,
+            'szulo_id' =>  null
         ]);
 
         familydata::factory()->create([
@@ -114,7 +124,8 @@ class DatabaseSeeder extends Seeder
             'naptar' => null,
             'elso_generacio' => null,
             'unoka_generacio' => 1,
-            'dedunoka_generacio' => null
+            'dedunoka_generacio' => null,
+            'szulo_id' =>  null
         ]);
 
         familydata::factory()->create([
@@ -137,7 +148,8 @@ class DatabaseSeeder extends Seeder
             'naptar' => null,
             'elso_generacio' => null,
             'unoka_generacio' => 1,
-            'dedunoka_generacio' => null
+            'dedunoka_generacio' => null,
+            'szulo_id' =>  1,
         ]);
         familydata::factory()->create([
             'nev' => 'Szabó',
@@ -159,7 +171,8 @@ class DatabaseSeeder extends Seeder
             'naptar' => null,
             'elso_generacio' => null,
             'unoka_generacio' => 1,
-            'dedunoka_generacio' => null
+            'dedunoka_generacio' => null,
+            'szulo_id' =>  4
         ]);
         familydata::factory()->create([
             'nev' => 'Szabó Dor Mária',
@@ -181,7 +194,8 @@ class DatabaseSeeder extends Seeder
             'naptar' => null,
             'elso_generacio' => null,
             'unoka_generacio' => 1,
-            'dedunoka_generacio' => null
+            'dedunoka_generacio' => null,
+            'szulo_id' =>  null
         ]);
         familydata::factory()->create([
             'nev' => 'Szabó Mária',
@@ -203,7 +217,8 @@ class DatabaseSeeder extends Seeder
             'naptar' => null,
             'elso_generacio' => null,
             'unoka_generacio' => 1,
-            'dedunoka_generacio' => null
+            'dedunoka_generacio' => null,
+            'szulo_id' =>  null
         ]);
         familydata::factory()->create([
             'nev' => 'Szabó ',
@@ -225,7 +240,8 @@ class DatabaseSeeder extends Seeder
             'naptar' => null,
             'elso_generacio' => null,
             'unoka_generacio' => 1,
-            'dedunoka_generacio' => null
+            'dedunoka_generacio' => null,
+            'szulo_id' =>  null
         ]);
         Room::factory()->create([
             'szoba_id' => 'F1/1',
