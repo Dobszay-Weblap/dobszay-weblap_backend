@@ -25,6 +25,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory()->create([
+            'name' => 'Test ',
+            'email' => 'kati@gmail.hu',
+            'password' => '123456',
+            'jogosultsagi_szint' => 'felhasznalo',
+        ]);
+
+
+        User::factory()->create([
             'name' => 'Test Admin',
             'email' => 'dobszay@gmail.hu',
             'password' => '1234567',
