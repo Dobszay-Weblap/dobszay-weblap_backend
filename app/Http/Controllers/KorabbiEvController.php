@@ -42,41 +42,65 @@ class KorabbiEvController extends Controller
     }
 
 
-public function show($year)
+    public function show($year)
+    {
+        Log::info("Keresett év: " . $year); // Logoljuk az érkező évet
+    
+        // Lekérdezzük az adatokat az adott évhez
+        $korabbiev = KorabbiEv::where('year', $year)->first();
+    
+        // Ellenőrizzük, hogy létezik-e a 'korabbiev' objektum és hogy van-e 'images' tulajdonsága
+        if ($korabbiev && isset($korabbiev->images)) {
+            Log::info("Talált adatok: " . json_encode($korabbiev)); // Logoljuk, ha van adat
+    
+            return response()->json($korabbiev);
+        }
+    
+        // Ha nincs adat vagy nincs 'images' mező, akkor hibát adunk vissza
+        Log::error("Adatok nem találhatóak vagy nincs képek: " . $year); // Logoljunk hibát
+    
+        return response()->json(['error' => 'Data not found or images not available'], 404);
+    }
+    
+    public function getDataByYear($year)
 {
-    // Lekérdezi az adatokat az adott évhez
-    $korabbiev = KorabbiEv::where('year', $year)->first();
+    // Naplózzuk, hogy milyen évet kérünk
+    Log::info("Getting data for year {$year}");
 
-    // Ellenőrzi, hogy létezik-e a 'korabbiev' objektum és hogy van-e 'images' tulajdonsága
-    if ($korabbiev && isset($korabbiev->images)) {
-        return response()->json($korabbiev);
+    // Lekérdezzük az adatokat az adott évhez
+    $data = DB::table('korabbi_evs')
+        ->where('year', '=', $year)
+        ->first(); // Ha nem talál, akkor null-t ad vissza.
+
+    // Ha van adat, naplózzuk, hogy mit találtunk
+    if ($data) {
+        Log::info("Data for year {$year}: ", ['data' => $data]);
+
+        return response()->json([
+            'year' => $data->year,
+            'images' => json_decode($data->kepek),
+            'videos' => json_decode($data->videok),
+        ]);
     }
 
-    // Ha nincs adat vagy nincs 'images' mező, akkor hibát ad vissza
+    // Ha nincs adat, naplózzuk a hibát
+    Log::error("No data found for year {$year}");
+
     return response()->json(['error' => 'Data not found or images not available'], 404);
 }
 
-    
+    public function insertTestData()
+{
+    DB::table('korabbi_evs')->insert([
+        'year' => '2023',
+        'kepek' => json_encode(['kep1.jpg', 'kep2.jpg']),
+        'videok' => json_encode(['video1.mp4', 'video2.mp4']),
+    ]);
+
+    return response()->json(['message' => 'Test data inserted successfully']);
+}
 
     
-
-    public function getDataByYear($year)
-    {
-        // Az adatbázisból lekérdezzük az adatokat az adott évhez
-        $data = DB::table('korabbiev_adatok')->where('year', $year)->first();
-    
-        if ($data) {
-            return [
-                'year' => $data->year,
-                'kepek' => json_decode($data->images),
-                'videok' => json_decode($data->videos),
-            ];
-        }
-    
-        return null; // Ha nincs adat, akkor null-t adunk vissza
-    }
-    
-
 
     public function getYearContent($year)
     {
