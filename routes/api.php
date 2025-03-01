@@ -40,9 +40,10 @@ Route::post('/foglaltsag/hozzad', [FoglaltsagController::class, 'hozzad'])->midd
 
 
 
-Route::get('/korabbiev/{year}', [KorabbiEvController::class, 'show']);
-// A lekérdezés a getDataByYear metódust hívja meg.
+//Route::get('/korabbiev/{year}', [KorabbiEvController::class, 'show']);
+// api.php
 Route::get('/korabbiev/{year}', [KorabbiEvController::class, 'getDataByYear']);
+
 
 
 Route::get('/test', function () {
@@ -52,7 +53,23 @@ Route::get('/test', function () {
 Route::get('/csaladi-adatok/{id}/gyerekek', [FamilyDataController::class, 'children']);
 
 
+Route::get('/videos', function () {
+    $files = File::files(public_path('videok')); // A 'videok' mappa fájljai
+    $videos = collect($files)->map(function ($file) {
+        return url('videok/' . $file->getFilename()); // Generálja az URL-t
+    });
 
+    return response()->json($videos);
+});
+
+Route::get('/images', function () {
+    $files = File::files(public_path('kepek')); // A 'kepek' mappa fájljai
+    $images = collect($files)->map(function ($file) {
+        return url('kepek/' . $file->getFilename()); // Generálja az URL-t
+    });
+
+    return response()->json($images);
+});
 
 Route::get('rooms', [RoomController::class, 'index']);
 Route::get('rooms/{id}', [RoomController::class, 'show']);

@@ -73,9 +73,9 @@ class KorabbiEvController extends Controller
         if ($data) {
             Log::info("Data for year {$year}: ", ['data' => $data]);
     
-            // A Laravel `asset()` függvényével teljes elérési utakat készítünk
-            $kepek = array_map(fn($file) => asset($file), json_decode($data->kepek));
-            $videok = array_map(fn($file) => asset($file), json_decode($data->videok));
+            // Ellenőrizzük, hogy vannak-e képek és videók
+            $kepek = !empty($data->kepek) ? array_map(fn($file) => asset($file), json_decode($data->kepek)) : [];
+            $videok = !empty($data->videok) ? array_map(fn($file) => asset($file), json_decode($data->videok)) : [];
     
             return response()->json([
                 'year' => $data->year,
@@ -84,9 +84,15 @@ class KorabbiEvController extends Controller
             ]);
         }
     
+        // Ha nincs adat az adott évre, adjunk vissza egy üres listát
         Log::error("No data found for year {$year}");
-        return response()->json(['error' => 'Data not found or images not available'], 404);
+        return response()->json([
+            'year' => $year,
+            'images' => [],
+            'videos' => []
+        ]);
     }
+    
     
     public function insertTestData()
 {

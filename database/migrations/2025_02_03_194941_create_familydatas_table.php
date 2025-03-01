@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('skype')->unique()->nullable();
             $table->integer('csaladsorszam')->nullable();
             $table->integer('matebazsi_kod')->unique()->nullable();
-            $table->integer('sor_szamlalo');
+            $table->integer('sor_szamlalo')->nullable();
             $table->string('becenev_sor')->nullable();
             $table->string('bankszamla')->nullable();
             $table->string('revolut_id')->nullable();
