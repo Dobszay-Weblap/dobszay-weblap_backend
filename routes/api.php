@@ -12,7 +12,7 @@ use App\Http\Controllers\KorabbiEvController;
 
 
 use App\Http\Controllers\FoglaltsagController;
-
+use App\Models\Etel;
 
 Route::middleware(['auth:sanctum'])
      ->get('/users', [UserController::class, 'index']);
@@ -31,6 +31,13 @@ Route::apiResource('/csaladi-adatok', FamilydataController::class);
     Route::get('/csaladi-adatok/{id}', [FamilyDataController::class, 'show']);
     Route::put('/csaladi-adatok/{id}', [FamilyDataController::class, 'update']);
     Route::delete('/csaladi-adatok/{id}', [FamilyDataController::class, 'destroy']);
+
+    Route::get('/etelek', [Etel::class, 'index']);
+    Route::post('/etelek', [Etel::class, 'store']);
+    Route::get('/etelek/{id}', [Etel::class, 'show']);
+    Route::put('/etelek/{id}', [Etel::class, 'update']);
+    Route::delete('/etelek/{id}', [Etel::class, 'destroy']);
+
 
     Route::get('/csaladi-adatok/{id}/gyerekek', [FamilyDataController::class, 'children']);
 

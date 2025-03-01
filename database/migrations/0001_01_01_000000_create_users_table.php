@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 255)->unique(); 
             $table->string('email', 255)->unique();
             $table->string('password', 255);
-            $table->enum('jogosultsagi_szint', ['felhasznalo', 'admin'])->default('felhasznalo');
+            $table->enum('jogosultsagi_szint', ['felhasznalo', 'admin','nezo'])->default('felhasznalo');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

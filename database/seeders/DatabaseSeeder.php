@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test ',
             'email' => 'kati@gmail.hu',
             'password' => '123456',
-            'jogosultsagi_szint' => 'felhasznalo',
+            'jogosultsagi_szint' => 'nezo',
         ]);
 
 
@@ -61,7 +61,6 @@ class DatabaseSeeder extends Seeder
             'elso_generacio'=> null,
             'unoka_generacio'=> null,
             'dedunoka_generacio'=> null,
-            'szulo_id' =>  null
         ]);
         familydata::factory()->create([
             'nev'=>  'Dobszay Ágnes',
@@ -84,7 +83,6 @@ class DatabaseSeeder extends Seeder
             'elso_generacio'=> 1,
             'unoka_generacio'=>  null,
             'dedunoka_generacio'=>  null,
-            'szulo_id' =>  1
        ]);
 
        familydata::factory()->create([
@@ -108,7 +106,6 @@ class DatabaseSeeder extends Seeder
         'elso_generacio'=> 1,
         'unoka_generacio'=> null,
         'dedunoka_generacio'=> null,
-        'szulo_id' =>  null
        ]);
 
        familydata::factory()->create([
@@ -132,7 +129,6 @@ class DatabaseSeeder extends Seeder
         'elso_generacio'=> null,
         'unoka_generacio'=> 1,
         'dedunoka_generacio'=> null,
-        'szulo_id' =>  2
        ]);
        
        familydata::factory()->create([
@@ -156,7 +152,6 @@ class DatabaseSeeder extends Seeder
         'elso_generacio'=> null,
         'unoka_generacio'=> 1,
         'dedunoka_generacio'=> null,
-        'szulo_id' =>  2
       ]);
        familydata::factory()->create([
         'nev'=> 'Czakó Adorján',
@@ -179,7 +174,6 @@ class DatabaseSeeder extends Seeder
         'elso_generacio'=> null,
         'unoka_generacio'=> 1,
         'dedunoka_generacio'=> null,
-        'szulo_id' =>  null
       ]);
        familydata::factory()->create([
         'nev'=> 'Czakó Veronika Ágnes',
@@ -202,7 +196,7 @@ class DatabaseSeeder extends Seeder
         'elso_generacio'=> null,
         'unoka_generacio'=> null,
         'dedunoka_generacio'=> 1
-        'szulo_id' =>  null
+
       ]);
 
        familydata::factory()->create([
