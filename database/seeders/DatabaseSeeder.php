@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\familydata;
 use App\Models\Room;
 use App\Models\User;
+use App\Models\Etel;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -16,6 +17,1332 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+
+        $etelek = [
+          [
+            'nev'=> '2025.05.28 hétfő',
+            'adag_A'=> 'Sajtos tejfölös spagetti',
+            'adag_B'=> 'Borsostokány tésztával',
+            'adag_C'=> 'Görögapró pecsenye hasábkrumpli',
+            'leves_adag'=> 'Kertészleves',
+            'email'=> '',
+          ],
+          [
+            'nev'=> 'Ágiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+          ],
+          [
+            'nev'=> 'Lucáék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+          ],
+          [
+            'nev'=> 'Tamásék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+          ],
+          [
+            'nev'=> 'Zsófiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+          ],
+          [
+            'nev'=> 'Péterék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+          ],
+          [
+            'nev'=> 'Jánosék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Kláráék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Miklósék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Eszterék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Katiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Gergőék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Mareszék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Ritáék',
+           'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+            'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Ambrusék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Balázsék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Boriék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Julcssiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Pannáék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Marci',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Hétfő összesítés',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+            'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'nev',
+           'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+            'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> '0000.00.00 kedd',
+            'adag_A'=> 'Bolonai spagetti',
+            'adag_B'=> 'Sóskamártás tojás burgonya',
+            'adag_C'=> 'Bakonyi csirkemell házi tarhonya',
+            'leves_adag'=> 'Borsóleves',
+            'email'=> 'ÖSSZES',
+         
+          ],
+          [
+            'nev'=> 'Ágiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Lucáék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Tamásék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Zsófiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Péterék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Jánosék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Kláráék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Miklósék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Eszterék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Katiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Gergőék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Ambrusék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Balázsék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Pannáék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Marci',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Boriék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Mareszék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Julcsiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Kedd összesítés',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 00,
+            'leves_adag' => '',
+            'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'nev',
+           'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+            'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> '0000.00.00 szerda',
+            'adag_A'=> 'Vadas csőtészta',
+            'adag_B'=> 'Zöldbabfőzelék fasírozott',
+            'adag_C'=> 'Brassói aprópecsenye burgonya',
+            'leves_adag'=> 'Húsleves',
+            'email'=> 'ÖSSZES',
+         
+          ],
+          [
+            'nev'=> 'Ágiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Lucáék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Tamásék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Zsófiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Péterék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Jánosék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Kláráék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Miklósék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Eszterék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Katiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Gergőék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Ambrusék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Balázsék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Pannáék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Marci',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Boriék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Mareszék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Julcsiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Szerda összesítés',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+            'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'nev',
+           'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+            'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> '0000.08.00 csütörtök',
+            'adag_A'=> 'Sajtos baconos csirkemell spagetti',
+            'adag_B'=> 'Megymártás sült hús dara',
+            'adag_C'=> 'Rántott csirkemell rizi-bizi',
+            'leves_adag'=> 'Karfiolleves',
+            'email'=> 'ÖSSZES',
+         
+          ],
+          [
+            'nev'=> 'Ágiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Lucáék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Tamásék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Zsófiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Péterék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Jánosék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Kláráék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Miklósék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Eszterék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Katiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Gergőék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Ambrusék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Balázsék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Pannáék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Marci',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Boriék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Mareszék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Julcsiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Csütörtök összesítés',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+            'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'nev',
+           'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+            'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> '0000.08.00 péntek',
+            'adag_A'=> 'Túróstészta',
+            'adag_B'=> 'Töltött paprika burgonya',
+            'adag_C'=> 'Lecsós szelet tarhonya',
+            'leves_adag'=> 'Burgonyaleves',
+            'email'=> 'ÖSSZES',
+         
+          ],
+          [
+            'nev'=> 'Ágiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Lucáék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Tamásék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Zsófiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Péterék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Jánosék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Kláráék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Miklósék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Eszterék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Katiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Gergőék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Ambrusék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Balázsék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Pannáék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Marci',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Boriék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Mareszék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Julcsiék',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Péntek összesítés',
+            'adag_A'=> 0,
+            'adag_B'=> 0,
+            'adag_C'=> 0,
+            'leves_adag' => '',
+            'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'nev',
+           'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+            'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> '0000.08.00 szombat',
+            'adag_A'=> 'Csirkepapirkás tarhonya',
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag'=> 'Zöldségleves',
+            'email'=> 'ÖSSZES',
+         
+          ],
+          [
+            'nev'=> 'Ágiék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Lucáék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Tamásék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Zsófiék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Péterék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Jánosék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Kláráék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Miklósék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Eszterék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Katiék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Gergőék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Ambrusék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Balázsék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Pannáék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Marci',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Boriék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Mareszék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Julcsiék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Szombati összesítés',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+            'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'nev',
+            'adag_A'=> '0',
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+            'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> '0000.08.00 vasárnap',
+            'adag_A'=> 'Rántott hús burgonya',
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag'=> 'Fahéjas szilvaleves',
+            'email'=> 'ÖSSZES',
+         
+          ],
+          [
+            'nev'=> 'Ágiék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Lucáék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Tamásék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Zsófiék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Péterék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Jánosék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Kláráék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Miklósék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Eszterék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Katiék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Gergőék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Ambrusék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Balázsék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Pannáék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Marci',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Boriék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Mareszék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Julcsiék',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+         'email' => 'dorka@gmail.hu',
+         
+          ],
+          [
+            'nev'=> 'Vasárnapi összesítés',
+            'adag_A'=> 0,
+           'adag_B'=> 0,
+           'adag_C'=> 0,
+            'leves_adag' => '',
+            'email'=> '',
+            ]            
+         
+          ];
+
+
+
+      foreach ($etelek as $etel) {
+          Etel::create($etel);
+      }
 
         User::factory()->create([
             'name' => 'Test User',

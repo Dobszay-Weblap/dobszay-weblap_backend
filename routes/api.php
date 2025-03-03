@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\EtelController;
 use App\Http\Controllers\FamilydataController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Admin;
@@ -32,11 +33,15 @@ Route::apiResource('/csaladi-adatok', FamilydataController::class);
     Route::put('/csaladi-adatok/{id}', [FamilyDataController::class, 'update']);
     Route::delete('/csaladi-adatok/{id}', [FamilyDataController::class, 'destroy']);
 
-    Route::get('/etelek', [Etel::class, 'index']);
-    Route::post('/etelek', [Etel::class, 'store']);
-    Route::get('/etelek/{id}', [Etel::class, 'show']);
-    Route::put('/etelek/{id}', [Etel::class, 'update']);
-    Route::delete('/etelek/{id}', [Etel::class, 'destroy']);
+
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/etelek', [EtelController::class, 'index']);
+        Route::post('/etelek', [EtelController::class, 'store']);
+        Route::get('/etelek/{id}', [EtelController::class, 'show']);
+        Route::put('/etelek/{id}', [EtelController::class, 'update']);
+        Route::delete('/etelek/{id}', [EtelController::class, 'destroy']);
+    });
 
 
     Route::get('/csaladi-adatok/{id}/gyerekek', [FamilyDataController::class, 'children']);
