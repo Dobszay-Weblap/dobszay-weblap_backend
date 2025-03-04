@@ -11,9 +11,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\KorabbiEvController;
 
-
 use App\Http\Controllers\FoglaltsagController;
-use App\Models\Etel;
+use App\Http\Controllers\MenuController;
 
 Route::middleware(['auth:sanctum'])
      ->get('/users', [UserController::class, 'index']);
@@ -33,18 +32,14 @@ Route::apiResource('/csaladi-adatok', FamilydataController::class);
     Route::put('/csaladi-adatok/{id}', [FamilyDataController::class, 'update']);
     Route::delete('/csaladi-adatok/{id}', [FamilyDataController::class, 'destroy']);
 
+    Route::get('/menuk', [MenuController::class, 'index']);
+    Route::get('/etelek', [EtelController::class, 'index']);
+    Route::put('/etelek/{id}', [EtelController::class, 'update']);
+    
 
 
-    Route::middleware('auth:sanctum')->group(function () {
-        Route::get('/etelek', [EtelController::class, 'index']);
-        Route::post('/etelek', [EtelController::class, 'store']);
-        Route::get('/etelek/{id}', [EtelController::class, 'show']);
-        Route::put('/etelek/{id}', [EtelController::class, 'update']);
-        Route::delete('/etelek/{id}', [EtelController::class, 'destroy']);
-    });
 
-
-    Route::get('/csaladi-adatok/{id}/gyerekek', [FamilyDataController::class, 'children']);
+Route::get('/csaladi-adatok/{id}/gyerekek', [FamilyDataController::class, 'children']);
 
     
 Route::get('/foglaltsag', [FoglaltsagController::class, 'index']);

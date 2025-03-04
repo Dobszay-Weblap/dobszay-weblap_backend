@@ -14,12 +14,16 @@ return new class extends Migration
     Schema::create('etels', function (Blueprint $table) {
         $table->id();
         $table->string('nev');
-        $table->string('adag_A')->default(0);
-        $table->string('adag_B')->default(0);
-        $table->string('adag_C')->default(0);
-        $table->string('leves_adag')->default(0);
+        $table->integer('adag_A')->default(0);
+        $table->integer('adag_B')->default(0);
+        $table->integer('adag_C')->default(0);
+        $table->integer('leves_adag')->default(0);
         $table->string('email'); // A felhasználó e-mail címe
+        $table->date('datum')->default('2024-01-01');
+
+        
         $table->timestamps();
+        
     });
 }
 

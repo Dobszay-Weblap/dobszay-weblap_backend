@@ -7,10 +7,17 @@ use Illuminate\Http\Request;
 
 class EtelController extends Controller
 {
-    public function index(Request $request)
-{
-    return response()->json(Etel::all()); // Minden adatot visszaadunk, így látni fogod a Szerdai menüt is
-}
+    public function index(Request $request) {
+        $datum = $request->query('datum');
+    
+        if ($datum) {
+            return response()->json(Etel::where('datum', $datum)->get());
+        }
+    
+        return response()->json(Etel::all());
+    }
+    
+    
 
 
 public function update(Request $request, $id)
