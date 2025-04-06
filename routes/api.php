@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\EtelController;
 use App\Http\Controllers\FamilydataController;
 use App\Http\Controllers\UserController;
@@ -47,11 +49,11 @@ Route::post('/foglaltsag/hozzad', [FoglaltsagController::class, 'hozzad'])->midd
 
 
 
-//Route::get('/korabbiev/{year}', [KorabbiEvController::class, 'show']);
-// api.php
 Route::get('/korabbiev/{year}', [KorabbiEvController::class, 'getDataByYear']);
 
+Route::post('/reset-password', [ResetPasswordController::class, 'reset']);
 
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail']);
 
 Route::get('/test', function () {
     return response()->json(['message' => 'A backend működik!']);
