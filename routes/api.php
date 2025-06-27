@@ -15,6 +15,7 @@ use App\Http\Controllers\KorabbiEvController;
 
 use App\Http\Controllers\FoglaltsagController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\SzabalyController;
 
 Route::middleware(['auth:sanctum'])
      ->get('/users', [UserController::class, 'index']);
@@ -38,6 +39,11 @@ Route::apiResource('/csaladi-adatok', FamilydataController::class);
     Route::get('/etelek', [EtelController::class, 'index']);
     Route::put('/etelek/{id}', [EtelController::class, 'update']);
     
+    Route::get('/szabalyok', [SzabalyController::class, 'index']);
+/*     Route::put('/szabalyok/{szabalyok.id}', [SzabalyController::class, 'update']); */
+
+    
+
 
 
 

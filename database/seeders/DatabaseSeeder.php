@@ -7,6 +7,7 @@ use App\Models\Room;
 use App\Models\User;
 use App\Models\Etel;
 use App\Models\Menu;
+use App\Models\Szabaly;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -19,6 +20,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+
+        
 
         $menuk = [
           [
@@ -84,6 +87,17 @@ class DatabaseSeeder extends Seeder
             'datum' => '2024-03-05', // Kedd
         ],
     ];
+
+
+    Szabaly::create([
+            'felso_cim' => 'Iskola utca ???',
+            'also_cim' => 'Szigeti József u. 18',
+            'gondnok_nev' => 'Zsuzsa telefon: ' ,
+            'wifi_nev' => 'kaptalan',
+            'wifi_jelszo' => '12341234',
+            'csendes_piheno' => "nincs hangoskodás 13–15 h és 21 h-tól,\nez nem fedi le a kisbabák elvásását, ha lehet, többet is írjunk ki.\nMondd meg a kisbabások!",
+            'malacszolgalat' => "Pohárjelölő, otthonról jellegzetes saját bögre stb...\nLehetőség szerint mindenki maga (családja) után mosogat (asszem ebben maradtunk)"
+        ]);
 
     User::factory()->create([
       'name' => 'Test User2',
@@ -1009,7 +1023,7 @@ class DatabaseSeeder extends Seeder
         'cim'=> 'Mennyország <3',
         'szuletesi_ev'=> 2018,
         'szulinap'=> 10.28,
-        'nevnap'=> 'ki_ki',
+        'nevnap'=> '',
         'email'=> null,
         'skype'=> null,
         'csaladsorszam'=> 3,
@@ -1600,10 +1614,10 @@ class DatabaseSeeder extends Seeder
         'nev'=> 'Incze Soma Ambrus',
        'mobil_telefonszam'=>  null,
         'vonalas_telefon'=> '',
-        'cim'=> 'ki_ki',
+        'cim'=> '',
         'szuletesi_ev'=> 2024,
         'szulinap'=> 12.08,
-        'nevnap'=> 'ki_ki',
+        'nevnap'=> '',
         'email'=> null,
         'skype'=> null,
         'csaladsorszam'=> 5,
