@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Csoportok;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -51,4 +52,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+public function csoportok()
+{
+    return $this->belongsToMany(Csoportok::class);
+}
+
+
+
 }

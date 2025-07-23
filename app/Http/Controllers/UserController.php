@@ -13,36 +13,56 @@ class UserController extends Controller
 {
     public function index()
     {
-        return User::all();
+         return User::with('csoportok')->get();
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $record = new User();
-        $record->fill($request->all());
-        $record->save();
-    }
+{
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users',
+        'password' => 'required|string|min:6',
+    ]);
+
+    $user = new User();
+    $user->name = $validated['name'];
+    $user->email = $validated['email'];
+    $user->password = Hash::make($validated['password']);
+    $user->save();
+
+    return response()->json($user, 201);
+}
+
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        return User::find($id);
-    }
+  public function show(string $id)
+{
+    $user = User::findOrFail($id);
+    return $user->load('csoportok');
+}
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        $user = User::find($id);
-        $user->fill($request->all());
-        $user->save();
-    }
+{
+    $user = User::findOrFail($id);
+
+    $validated = $request->validate([
+        'name' => 'sometimes|string|max:255',
+        'email' => 'sometimes|email|unique:users,email,' . $id,
+    ]);
+
+    $user->update($validated);
+
+    return response()->json($user);
+}
+
 
     /**
      * Remove the specified resource from storage.
@@ -52,10 +72,12 @@ class UserController extends Controller
         User::find($id)->delete();
     }
 
-    public function getUser() {
-        $user = Auth::user();
-        return response()->json($user);  // A válaszban küldd vissza az összes szükséges adatot, beleértve a 'jogosultsagi_szint' értéket is
-    }
+  public function getUser() {
+    $user = Auth::user()->load('csoportok');
+    return response()->json($user);
+}
+
+
     
     
     //nem alap lekérdezések
@@ -68,8 +90,9 @@ class UserController extends Controller
             return response()->json(["message" => $validator->errors()->all()], 400);
         }
         $user = User::where("id", $id)->update([
-            "password" => Hash::make($request->jelszo),
+            "password" => Hash::make($request->password),
         ]);
+
         return response()->json(["user" => $user]);
     }
 
@@ -86,7 +109,7 @@ class UserController extends Controller
     }
     
     //Bejelentkezés
-    public function login(Request $request)
+public function login(Request $request)
 {
     $validator = Validator::make($request->all(), [
         'email' => 'required|email',
@@ -94,20 +117,29 @@ class UserController extends Controller
     ]);
 
     if ($validator->fails()) {
-        return response()->json(['errors' => $validator->errors()], 400);
+        return response()->json(['errors' => $validator->errors()], 422);
     }
 
-    if (Auth::attempt([
-        'email' => $request->email,
-        'password' => $request->password,
-    ])) {
-        $user = Auth::user();
-        return response()->json([
-            'message' => 'Sikeres bejelentkezés!',
-            'user' => $user,
-            'token' => $user->createToken('API Token')->plainTextToken
-        ]);
+    if (!Auth::attempt($request->only('email', 'password'))) {
+        return response()->json(['message' => 'Hibás bejelentkezési adatok'], 401);
     }
+
+    $user = Auth::user()->load('csoportok'); // Fontos: töltsük be a kapcsolt csoportokat is!
+
+    return response()->json([
+        'message' => 'Sikeres bejelentkezés!',
+        'user' => $user, // Itt most az egész felhasználót visszaadjuk, benne a csoportokkal
+        'token' => $user->createToken('auth_token')->plainTextToken,
+    ]);
+}
+
+
+
+public function currentUser(Request $request)
+{
+    return $request->user()->load(['csoportok' => function($query) {
+        $query->select('csoportoks.id', 'csoportoks.nev');
+    }]);
 }
 
     //Profil megtekintés
@@ -124,6 +156,30 @@ class UserController extends Controller
             'user' => $user,
         ]);
     }
+
+    // UserController-hez add hozzá ezt a metódust
+public function updateCsoportok(Request $request, User $user)
+{
+    $request->validate([
+        'csoportok' => 'required|array',
+        'csoportok.*' => 'exists:csoportoks,id'
+    ]);
+    
+    $user->csoportok()->sync($request->csoportok);
+    
+    return $user->load('csoportok');
+}
+
+// AuthController.php vagy UserController.php
+public function me(Request $request)
+{
+    $user = auth()->user()->load('csoportok'); // Ezzel betöltjük a kapcsolódó csoportokat is
+
+    return response()->json([
+        'user' => $user,
+    ]);
+}
+
 
 
 }

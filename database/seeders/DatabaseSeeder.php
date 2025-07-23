@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Csoportok;
 use App\Models\familydata;
 use App\Models\Room;
 use App\Models\User;
@@ -19,107 +20,62 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        
-
-        $menuk = [
-          [
-              'datum' => '2024-03-01', // SAJÁT dátum
-              'foetel_A' => 'Sajtos tejfölös spagetti',
-              'foetel_B' => 'Borsostokány tésztával',
-              'foetel_C' => 'Görög apró pecsenye',
-              'leves' => 'Kertészleves',
-          ],
-          [
-              'datum' => '2024-03-02', // SAJÁT dátum
-              'foetel_A' => 'Rakott krumpli',
-              'foetel_B' => 'Húsleves májgombóccal',
-              'foetel_C' => 'Rántott sajt rizzsel',
-              'leves' => 'Paradicsomleves',
-          ],
-          [
-              'datum' => '2024-03-03', // SAJÁT dátum
-              'foetel_A' => 'Lecsós csirkemell',
-              'foetel_B' => 'Zöldborsó főzelék fasírttal',
-              'foetel_C' => 'Marhapörkölt galuskával',
-              'leves' => 'Zöldségleves',
-          ],
-      ];
-
-      DB::table('menus')->insert($menuk);
-  
-      $etelek = [
-        [
-            'nev' => 'Ágiék',
-            'adag_A' => 2,
-            'adag_B' => 1,
-            'adag_C' => 0,
-            'leves_adag' => 1,
-            'email' => 'agi@gmail.com',
-            'datum' => '2024-03-04', // Hétfő
-        ],
-        [
-          'nev' => 'Ágiék',
-          'adag_A' => 2,
-          'adag_B' => 1,
-          'adag_C' => 0,
-          'leves_adag' => 1,
-          'email' => 'agi@gmail.com',
-          'datum' => '2024-03-05', // Kedd
-      ],
-        [
-            'nev' => 'Péterék',
-            'adag_A' => 1,
-            'adag_B' => 2,
-            'adag_C' => 1,
-            'leves_adag' => 1,
-            'email' => 'peter@gmail.com',
-            'datum' => '2024-03-04', // Hétfő
-        ],
-        [
-            'nev' => 'Katiék',
-            'adag_A' => 3,
-            'adag_B' => 0,
-            'adag_C' => 2,
-            'leves_adag' => 2,
-            'email' => 'dorka@gmail.com',
-            'datum' => '2024-03-05', // Kedd
-        ],
-    ];
-
-
-    Szabaly::create([
-            'felso_cim' => 'Iskola utca ???',
-            'also_cim' => 'Szigeti József u. 18',
-            'gondnok_nev' => 'Zsuzsa telefon: ' ,
-            'wifi_nev' => 'kaptalan',
-            'wifi_jelszo' => '12341234',
-            'csendes_piheno' => "nincs hangoskodás 13–15 h és 21 h-tól,\nez nem fedi le a kisbabák elvásását, ha lehet, többet is írjunk ki.\nMondd meg a kisbabások!",
-            'malacszolgalat' => "Pohárjelölő, otthonról jellegzetes saját bögre stb...\nLehetőség szerint mindenki maga (családja) után mosogat (asszem ebben maradtunk)"
+    
+        //szabályosk és infók
+        Szabaly::create([
+        'felso_cim' => 'Iskola utca ???',
+        'also_cim' => 'Szigeti József u. 18',
+        'gondnok_nev' => 'Zsuzsa telefon: ' ,
+        'wifi_nev' => 'kaptalan',
+        'wifi_jelszo' => '12341234',
+        'csendes_piheno' => "nincs hangoskodás 13–15 h és 21 h-tól,\nez nem fedi le a kisbabák elvásását, ha lehet, többet is írjunk ki.\nMondd meg a kisbabások!",
+        'malacszolgalat' => "Pohárjelölő, otthonról jellegzetes saját bögre stb...\nLehetőség szerint mindenki maga (családja) után mosogat (asszem ebben maradtunk)"
         ]);
 
-    User::factory()->create([
-      'name' => 'Test User2',
-      'email' => 'xxxl72845@gmail.com',
-      'password' => '123456',
-      'jogosultsagi_szint' => 'felhasznalo',
-  ]);
+        //Csoportok létrehozása
+        $agiCsoport = Csoportok::create(['nev' => 'Ági']);
+        $mateCsoport = Csoportok::create(['nev' => 'Mátéék']);
+        $lucaCsoport = Csoportok::create(['nev' => 'Lucáék']);
+        $tamasCsoport = Csoportok::create(['nev' => 'Tamásék']);
+        $zsofiCsoport = Csoportok::create(['nev' => 'Zsófiék']);
+        $peterCsoport = Csoportok::create(['nev' => 'Péterék']);
+        $davidCsoport = Csoportok::create(['nev' => 'Dávid']);
+        $janosCsoport = Csoportok::create(['nev' => 'Jánosék']);
+        $klaraCsoport = Csoportok::create(['nev' => 'Kláráék']);
+        $miklosCsoport = Csoportok::create(['nev' => 'Miklósék']);
+        $eszterCsoport = Csoportok::create(['nev' => 'Eszterék']);
+        $katiCsoport = Csoportok::create(['nev' => 'Katiék']);
+        $gergoCsoport = Csoportok::create(['nev' => 'Gergőék']);
+        $balintCsoport = Csoportok::create(['nev' => 'Bálint']);
+        $mareszCsoport = Csoportok::create(['nev' => 'Mareszék']);
+        $ritaCsoport = Csoportok::create(['nev' => 'Ritáék']);
+        $ambrusCsoport = Csoportok::create(['nev' => 'Ambrusék']);
+        $balazsCsoport = Csoportok::create(['nev' => 'Balázsék']);
+        $julcsiCsoport = Csoportok::create(['nev' => 'Julcsiék']);
+        $boriCsoport = Csoportok::create(['nev' => 'Boriék']);
+        $pannaCsoport = Csoportok::create(['nev' => 'Pannák']);
+        $marciCsoport = Csoportok::create(['nev' => 'Marci']);
 
-        User::factory()->create([
+         $luca = User::factory()->create([
+            'name' => 'Test User2',
+            'email' => 'xxxl72845@gmail.com',
+            'password' => '123456',
+            'jogosultsagi_szint' => 'felhasznalo',
+        ]);
+
+        $agi= User::factory()->create([
             'name' => 'Test User',
             'email' => 'dorka@gmail.hu',
             'password' => '123456',
             'jogosultsagi_szint' => 'felhasznalo',
         ]);
 
-        User::factory()->create([
+       $mate = User::factory()->create([
             'name' => 'Test ',
             'email' => 'kati@gmail.hu',
             'password' => '123456',
-            'jogosultsagi_szint' => 'nezo',
+            'jogosultsagi_szint' => 'felhasznalo',
         ]);
-
 
         User::factory()->create([
             'name' => 'Test Admin',
@@ -128,7 +84,77 @@ class DatabaseSeeder extends Seeder
             'jogosultsagi_szint' => 'admin',
         ]);
 
-        //familydata::factory(10)->create();
+
+        DB::table('csoport_user')->insert([
+            ['user_id' => $agi->id, 'csoport_id' => $agiCsoport->id],
+            ['user_id' => $luca->id, 'csoport_id' => $agiCsoport->id],
+        ]);
+
+        DB::table('csoport_user')->insert([
+            ['user_id' => $mate->id, 'csoport_id' => $mateCsoport->id],
+        ]);
+
+
+        
+        Menu::create([
+            'datum' => '2025.07.01',
+            'foetel_A' => 'Sajtos tejfölös spagetti',
+            'foetel_B' => 'Rántott hús rizzsel',
+            'foetel_C' => 'Tojásos nokedli',
+            'leves' => 'Húsleves',
+        ]);
+
+        Menu::create([
+            'datum' => '2025.07.02',
+            'foetel_A' => 'Sajtos tejfölös spagetti',
+            'foetel_B' => 'Rántott hús rizzsel',
+            'foetel_C' => 'Tojásos nokedli',
+            'leves' => 'Borsóleves',
+        ]);
+
+        // ✅ 5. Rendelések (etels)
+        Etel::create([
+            'csoport_id' => $agiCsoport->id,
+            'nev' => 'Ági',
+            'datum' => '2025.07.01',
+            'adag_A' => 2,
+            'adag_B' => 0,
+            'adag_C' => 1,
+            'leves_adag' => ' ',
+        ]);
+
+        Etel::create([
+            'csoport_id' => $mateCsoport->id,
+            'nev' => 'Mátéék',
+            'datum' => '2025.07.01',
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 1,
+            'leves_adag' => ' ',
+        ]);
+
+        Etel::create([
+            'csoport_id' => $agiCsoport->id,
+            'nev' => 'Ági',
+            'datum' => '2025.07.02',
+            'adag_A' => 1,
+            'adag_B' => 1,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+
+        Etel::create([
+            'csoport_id' => $mateCsoport->id,
+            'nev' => 'Mátéék',
+            'datum' => '2025.07.02',
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 1,
+            'leves_adag' => ' ',
+        ]);
+
+
+        //családi adatok felvitele
         familydata::factory()->create([
             'nev'=> 'Dobszayné Párdányi Klára',
             'mobil_telefonszam'=> '+36705720758',

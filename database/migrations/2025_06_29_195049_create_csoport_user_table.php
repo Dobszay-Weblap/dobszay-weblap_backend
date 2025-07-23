@@ -9,17 +9,12 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-public function up()
+  public function up()
 {
-    Schema::create('etels', function (Blueprint $table) {
+    Schema::create('csoport_user', function (Blueprint $table) {
         $table->id();
+        $table->foreignId('user_id')->constrained()->onDelete('cascade');
         $table->foreignId('csoport_id')->constrained('csoportoks')->onDelete('cascade');
-        $table->string('nev'); // ⬅️ EZ KELL!
-        $table->date('datum');
-        $table->integer('adag_A')->default(0);
-        $table->integer('adag_B')->default(0);
-        $table->integer('adag_C')->default(0);
-        $table->string('leves_adag');
         $table->timestamps();
     });
 }
@@ -30,6 +25,6 @@ public function up()
      */
     public function down(): void
     {
-        Schema::dropIfExists('etels');
+        Schema::dropIfExists('csoport_user');
     }
 };

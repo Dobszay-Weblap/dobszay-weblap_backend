@@ -17,37 +17,61 @@ use App\Http\Controllers\FoglaltsagController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SzabalyController;
 
-Route::middleware(['auth:sanctum'])
-     ->get('/users', [UserController::class, 'index']);
-
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-        return $request->user();
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/user', function (Request $request) {
+        $user = $request->user()->load('csoportok');
+        return response()->json([
+            'user' => $user
+        ]);
     });
+});
 
-    Route::get('/insert-test-data', [KorabbiEvController::class, 'insertTestData']);
+    // Csoport kezelés
+   /*  Route::get('/csoportok', function () {
+        return Csoport::all();
+    }); */
 
+
+
+Route::post('/reset-password', [ResetPasswordController::class, 'reset']);
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail']);
 
 Route::apiResource('/csaladi-adatok', FamilydataController::class);
-
-    Route::get('/csaladi-adatok', [FamilyDataController::class, 'index']);
-    Route::post('/csaladi-adatok', [FamilyDataController::class, 'store']);
-    Route::get('/csaladi-adatok/{id}', [FamilyDataController::class, 'show']);
-    Route::put('/csaladi-adatok/{id}', [FamilyDataController::class, 'update']);
-    Route::delete('/csaladi-adatok/{id}', [FamilyDataController::class, 'destroy']);
-
-    Route::get('/menuk', [MenuController::class, 'index']);
-    Route::get('/etelek', [EtelController::class, 'index']);
-    Route::put('/etelek/{id}', [EtelController::class, 'update']);
-    
-    Route::get('/szabalyok', [SzabalyController::class, 'index']);
-/*     Route::put('/szabalyok/{szabalyok.id}', [SzabalyController::class, 'update']); */
-
-    
-
-
-
+Route::get('/csaladi-adatok', [FamilyDataController::class, 'index']);
+Route::post('/csaladi-adatok', [FamilyDataController::class, 'store']);
+Route::get('/csaladi-adatok/{id}', [FamilyDataController::class, 'show']);
+Route::put('/csaladi-adatok/{id}', [FamilyDataController::class, 'update']);
+Route::delete('/csaladi-adatok/{id}', [FamilyDataController::class, 'destroy']);
 
 Route::get('/csaladi-adatok/{id}/gyerekek', [FamilyDataController::class, 'children']);
+
+Route::get('/szabalyok', [SzabalyController::class, 'index']);    
+
+
+
+
+
+
+
+
+
+
+
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/menus', [MenuController::class, 'index']);
+    Route::post('/menus', [MenuController::class, 'store']);
+    Route::put('/menus/{menu}', [MenuController::class, 'update']);
+
+    Route::get('/etelek', [EtelController::class, 'index']);
+    Route::put('/etelek/{etel}', [EtelController::class, 'update']);
+});
+
+
+
+
+    
+Route::get('/insert-test-data', [KorabbiEvController::class, 'insertTestData']);
 
     
 Route::get('/foglaltsag', [FoglaltsagController::class, 'index']);
@@ -57,9 +81,7 @@ Route::post('/foglaltsag/hozzad', [FoglaltsagController::class, 'hozzad'])->midd
 
 Route::get('/korabbiev/{year}', [KorabbiEvController::class, 'getDataByYear']);
 
-Route::post('/reset-password', [ResetPasswordController::class, 'reset']);
 
-Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail']);
 
 Route::get('/test', function () {
     return response()->json(['message' => 'A backend működik!']);
