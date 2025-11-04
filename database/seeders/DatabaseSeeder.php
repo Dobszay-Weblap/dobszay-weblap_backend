@@ -12,6 +12,7 @@ use App\Models\Szabaly;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -56,44 +57,40 @@ class DatabaseSeeder extends Seeder
         $pannaCsoport = Csoportok::create(['nev' => 'Pannák']);
         $marciCsoport = Csoportok::create(['nev' => 'Marci']);
 
-         $luca = User::factory()->create([
-            'name' => 'Test User2',
-            'email' => 'xxxl72845@gmail.com',
-            'password' => '123456',
-            'jogosultsagi_szint' => 'felhasznalo',
-        ]);
 
-        $agi= User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'dorka@gmail.hu',
-            'password' => '123456',
-            'jogosultsagi_szint' => 'felhasznalo',
-        ]);
+      // Jelszavak hash-elése!
+      $luca = User::factory()->create([
+          'name' => 'Test User2',
+          'email' => 'xxxl72845@gmail.com',
+          'password' => Hash::make('123456'), // ⬅️ Hash::make()
+          'jogosultsagi_szint' => 'felhasznalo',
+      ]);
 
-       $mate = User::factory()->create([
-            'name' => 'Test ',
-            'email' => 'kati@gmail.hu',
-            'password' => '123456',
-            'jogosultsagi_szint' => 'felhasznalo',
-        ]);
+      $agi = User::factory()->create([
+          'name' => 'Test User',
+          'email' => 'dorka@gmail.hu',
+          'password' => Hash::make('123456'), // ⬅️ Hash::make()
+          'jogosultsagi_szint' => 'felhasznalo',
+      ]);
 
-        User::factory()->create([
-            'name' => 'Test Admin',
-            'email' => 'dobszay@gmail.hu',
-            'password' => '1234567',
-            'jogosultsagi_szint' => 'admin',
-        ]);
+      $mate = User::factory()->create([
+          'name' => 'Test',
+          'email' => 'kati@gmail.hu',
+          'password' => Hash::make('123456'), // ⬅️ Hash::make()
+          'jogosultsagi_szint' => 'felhasznalo',
+      ]);
 
+     User::factory()->create([
+          'name' => 'Test Admin',
+          'email' => 'xxxl72845@gmail.hu',
+          'password' => Hash::make('1234567'), // ⬅️ Hash::make()
+          'jogosultsagi_szint' => 'admin',
+      ]);
 
-        DB::table('csoport_user')->insert([
-            ['user_id' => $agi->id, 'csoport_id' => $agiCsoport->id],
-            ['user_id' => $luca->id, 'csoport_id' => $agiCsoport->id],
-        ]);
-
-        DB::table('csoport_user')->insert([
-            ['user_id' => $mate->id, 'csoport_id' => $mateCsoport->id],
-        ]);
-
+      // Eloquent használata DB::table helyett
+      $agi->csoportok()->attach($agiCsoport->id);
+      $luca->csoportok()->attach($agiCsoport->id);
+      $mate->csoportok()->attach($mateCsoport->id);
 
         
         Menu::create([

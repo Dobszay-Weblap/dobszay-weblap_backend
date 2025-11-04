@@ -17,14 +17,38 @@ use App\Http\Controllers\FoglaltsagController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SzabalyController;
 
-Route::middleware(['auth:sanctum'])->group(function () {
+
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail']);
+Route::post('/reset-password', [ResetPasswordController::class, 'reset']);
+
+
+Route::middleware('auth:sanctum')->group(function () {
+    // User adatok
     Route::get('/user', function (Request $request) {
-        $user = $request->user()->load('csoportok');
         return response()->json([
-            'user' => $user
+            'user' => $request->user()->load('csoportok')
         ]);
     });
+    
+    // Kijelentkezés
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
+
+    Route::get('/menus', [MenuController::class, 'index']);
+    Route::post('/menus', [MenuController::class, 'store']);
+    Route::put('/menus/{menu}', [MenuController::class, 'update']);
+
+    Route::get('/etelek', [EtelController::class, 'index']);
+    Route::put('/etelek/{etel}', [EtelController::class, 'update']);
 });
+
+
+Route::middleware('auth:sanctum')->get('/user', [UserController::class, 'getUser']);
+
+Route::middleware(['auth:sanctum', Admin::class])->group(function () {
+    Route::get('/admin/users', [UserController::class, 'index']);
+});
+
 
     // Csoport kezelés
    /*  Route::get('/csoportok', function () {
@@ -32,9 +56,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     }); */
 
 
-
-Route::post('/reset-password', [ResetPasswordController::class, 'reset']);
-Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail']);
 
 Route::apiResource('/csaladi-adatok', FamilydataController::class);
 Route::get('/csaladi-adatok', [FamilyDataController::class, 'index']);
@@ -57,15 +78,7 @@ Route::get('/szabalyok', [SzabalyController::class, 'index']);
 
 
 
-
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/menus', [MenuController::class, 'index']);
-    Route::post('/menus', [MenuController::class, 'store']);
-    Route::put('/menus/{menu}', [MenuController::class, 'update']);
-
-    Route::get('/etelek', [EtelController::class, 'index']);
-    Route::put('/etelek/{etel}', [EtelController::class, 'update']);
-});
+  
 
 
 
@@ -113,27 +126,3 @@ Route::get('rooms/{id}', [RoomController::class, 'show']);
 Route::post('rooms', [RoomController::class, 'store']);
 Route::put('rooms/{id}', [RoomController::class, 'update']);
 Route::delete('rooms/{id}', [RoomController::class, 'destroy']);
-
-
-
-
-// routes/api.php
-Route::middleware('auth:sanctum')->get('/user', [UserController::class, 'getUser']);
-
-
-Route::post('/login',[AuthenticatedSessionController::class, 'store']);
-
-Route::middleware(['auth:sanctum'])
-->group(function () {
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
-    // Kijelentkezés útvonal
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
-});
-
-
-Route::middleware(['auth:sanctum', Admin::class])
-->group(function () {
-    Route::get('/admin/users', [UserController::class, 'index']);
-});

@@ -56,7 +56,12 @@ class User extends Authenticatable
 
 public function csoportok()
 {
-    return $this->belongsToMany(Csoportok::class);
+    return $this->belongsToMany(
+        Csoportok::class,
+        'csoport_user',      // pivot tábla neve
+        'user_id',           // a user id mező a pivot táblában
+        'csoport_id'       // a csoportok id mező a pivot táblában
+    );
 }
 
 

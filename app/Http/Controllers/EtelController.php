@@ -11,13 +11,28 @@ class EtelController extends Controller
     public function index(Request $request)
 {
     try {
+        $user = $request->user();
+        
         $query = Etel::query();
 
         if ($request->has('datum')) {
             $query->where('datum', $request->datum);
         }
 
+        // Admin látja az összes ételt
         return $query->with('csoport')->get();
+
+        // Normál felhasználó csak a saját csoportjához tartozó ételeket látja
+        $csoportIds = $user->csoportok->pluck('id')->toArray();
+        
+        if (empty($csoportIds)) {
+            return response()->json([], 200);
+        }
+
+        return $query->whereIn('csoport_id', $csoportIds)
+                     ->with('csoport')
+                     ->get();
+
     } catch (\Exception $e) {
         return response()->json(['error' => $e->getMessage()], 500);
     }
@@ -37,9 +52,22 @@ class EtelController extends Controller
         }
     }
 
-        $etel->update($request->only([
-            'adag_A', 'adag_B', 'adag_C', 'leves_adag'
-        ]));
+        $validated = $request->validate([
+        'nev' => 'sometimes|string|max:255',
+        'adag_A' => 'nullable|integer|min:0',
+        'adag_B' => 'nullable|integer|min:0',
+        'adag_C' => 'nullable|integer|min:0',
+        'leves_adag' => 'nullable|string',
+
+        
+    ]);
+
+    if (!isset($validated['leves_adag'])) {
+        $validated['leves_adag'] = ''; // vagy 0, ha number
+    }
+
+
+    $etel->update($validated);
 
         return $etel;
     }

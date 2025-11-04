@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Etel extends Model
 {
-    protected $fillable = ['nev', 'adag_A', 'adag_B', 'adag_C', 'leves_adag', 'csoport_id'];
-
+    protected $fillable = ['nev', 'adag_A', 'adag_B', 'adag_C', 'leves_adag', 'csoport_id', 'datum'];
+    
+    protected $with = ['csoport']; // ⬅️ A class-on BELÜL kell lennie!
 
     public function csoport()
-{
-    return $this->belongsTo(Csoportok::class, 'csoport_id');
-}
+    {
+        return $this->belongsTo(Csoportok::class, 'csoport_id');
+    }
 }
 
 
