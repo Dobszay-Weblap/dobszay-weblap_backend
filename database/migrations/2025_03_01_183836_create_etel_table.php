@@ -14,11 +14,11 @@ public function up()
     Schema::create('etels', function (Blueprint $table) {
         $table->id();
         $table->foreignId('csoport_id')->constrained('csoportoks')->onDelete('cascade');
-        $table->string('nev'); // ⬅️ EZ KELL!
+        $table->string('nev');
         $table->date('datum');
-        $table->integer('adag_A')->default(0);
-        $table->integer('adag_B')->default(0);
-        $table->integer('adag_C')->default(0);
+        $table->integer('adag_A')->nullable()->default(0);  // ⬅️ MÓDOSÍTÁS
+        $table->integer('adag_B')->nullable()->default(0);  // ⬅️ MÓDOSÍTÁS
+        $table->integer('adag_C')->nullable()->default(0);  // ⬅️ MÓDOSÍTÁS
         $table->string('leves_adag');
         $table->timestamps();
     });

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Beallitas;
 use App\Models\Csoportok;
 use App\Models\familydata;
 use App\Models\Room;
@@ -13,6 +14,7 @@ use App\Models\Szabaly;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -56,100 +58,1828 @@ class DatabaseSeeder extends Seeder
         $boriCsoport = Csoportok::create(['nev' => 'Boriék']);
         $pannaCsoport = Csoportok::create(['nev' => 'Pannák']);
         $marciCsoport = Csoportok::create(['nev' => 'Marci']);
+        $etteremCsoport = Csoportok::create(['nev' => 'Virag étterem']);
 
-
-      // Jelszavak hash-elése!
-      $luca = User::factory()->create([
-          'name' => 'Test User2',
-          'email' => 'xxxl72845@gmail.com',
-          'password' => Hash::make('123456'), // ⬅️ Hash::make()
-          'jogosultsagi_szint' => 'felhasznalo',
-      ]);
-
-      $agi = User::factory()->create([
-          'name' => 'Test User',
-          'email' => 'dorka@gmail.hu',
+        $agi = User::factory()->create([
+          'name' => ' Dobszay Ágnes',
+          'email' => 'dobszagi@gmail.com',
           'password' => Hash::make('123456'), // ⬅️ Hash::make()
           'jogosultsagi_szint' => 'felhasznalo',
       ]);
 
       $mate = User::factory()->create([
-          'name' => 'Test',
+                'name' => 'Farkas Máté',
+                'email' => 'reklamnelkul@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'admin',
+            ]);
+
+      $nelli = User::factory()->create([
+                'name' => 'Szatmári Kornélia (Nelli)',
+                'email' => 'nellisz@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'admin',
+            ]);      
+
+      $cfluca = User::factory()->create([
+                'name' => 'Czakó-Farkas Luca Orsolya',
+                'email' => 'farkaslucao@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $adorjan = User::factory()->create([
+                'name' => 'Czakó Adorján',
+                'email' => 'czako.adorjan@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $tamas = User::factory()->create([
+                'name' => 'Dobszay Tamás',
+                'email' => 'dobtam@freemail.hu',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $jutka = User::factory()->create([
+                'name' => 'Dobszayné Hennel Judit',
+                'email' => 'dobszay.judit@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $zsofi = User::factory()->create([
+                'name' => 'Dobszay Zsófia',
+                'email' => 'dobszayzsofi@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $andris = User::factory()->create([
+                'name' => 'Bognár András Bálint',
+                'email' => 'buundy@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $peter = User::factory()->create([
+                'name' => 'Dobszay Péter',
+                'email' => 'dobszay.peter@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $ili = User::factory()->create([
+                'name' => 'Dobszay-Meskó Ilona',
+                'email' => 'meskoilona@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $david = User::factory()->create([
+                'name' => 'Dobszay Dávid',
+                'email' => 'david.dobszay@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $janos = User::factory()->create([
+                'name' => 'Dobszay János',
+                'email' => 'j.dobszay@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $titi = User::factory()->create([
+                'name' => 'Dobszay Jánosné (Titi)',
+                'email' => 'dy.krisztina@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $klara = User::factory()->create([
+                'name' => 'Huszka-Dobszay Klára',
+                'email' => 'klara.huszka.dobszay@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $hagoston = User::factory()->create([
+                'name' => 'Huszka Ágoston',
+                'email' => 'agoston.huszka@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $miklos = User::factory()->create([
+                'name' => 'Dobszay Miklós',
+                'email' => 'dobszaymiklos@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'admin',
+            ]);
+
+      $dtimi = User::factory()->create([
+                'name' => 'Dobszayné Janto Timea',
+                'email' => 'timcsussz@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $seszter = User::factory()->create([
+                'name' => 'Steinbach-Dobszay Eszter',
+                'email' => 'dobszayeszter@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $sagoston = User::factory()->create([
+                'name' => 'Steinbach Ágoston',
+                'email' => 'agoston.steinbach@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $kati = User::factory()->create([
+                'name' => 'D. Szűcs-Dobszay Katalin',
+                'email' => 'dobszykat@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'admin',
+            ]);
+
+      $szergely = User::factory()->create([
+                'name' => 'D. Szűcs Gergely',
+                'email' => 'gergely.dszucs@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $dorka = User::factory()->create([
+                'name' => 'Dobszay Dorka',
+                'email' => 'dobszaydorka@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'admin',
+            ]);
+
+      $gergo = User::factory()->create([
+                'name' => 'Dobszay Gergely',
+                'email' => 'gdobszay@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $bea = User::factory()->create([
+                'name' => 'Dobszayné Triff Beatrix',
+                'email' => 'btriff15@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $balint = User::factory()->create([
+                'name' => 'Dobszay Bálint',
+                'email' => 'dobszi14@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $maresz = User::factory()->create([
+                'name' => 'Dobszay Marcsi',
+                'email' => 'marcsid96@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $fmagyas = User::factory()->create([
+                'name' => 'Fitori Mátyás Bence',
+                'email' => 'fitorimatyasbence@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $rita = User::factory()->create([
+                'name' => 'Kalapos-Dobszay Rita',
+                'email' => 'vancsi01@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $kpeter = User::factory()->create([
+                'name' => 'Kalapos Péter',
+                'email' => 'kalapos.peti@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $magyi = User::factory()->create([
+                'name' => 'Dobszay Mátyás',
+                'email' => 'dobszy21@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $ambrus = User::factory()->create([
+                'name' => 'Dobszay Ambrus',
+                'email' => 'dobszaya@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+      $marcsi = User::factory()->create([
+                'name' => 'Dobszay Ambrusné Marcsi',
+                'email' => 'dmarcsi67@freemail.hu',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $balazs = User::factory()->create([
+                'name' => 'Dobszay Balázs',
+                'email' => 'dobszayb18@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+      $ddeszter = User::factory()->create([
+                'name' => 'Dobszay-Dudás Eszter Éva',
+                'email' => 'desztiti@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $julcsi = User::factory()->create([
+                'name' => 'Schulek-Tóthné Dobszay Julcsi',
+                'email' => 'dobszayj14@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $balu = User::factory()->create([
+                'name' => 'Schulek-Tóth Balázs',
+                'email' => 'stbalu@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $bori = User::factory()->create([
+                'name' => 'Dobszay Bori ',
+                'email' => 'dobbori@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $dani = User::factory()->create([
+                'name' => 'Incze Dániel',
+                'email' => 'inczedani96@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $panna = User::factory()->create([
+                'name' => 'Dobszay Anna',
+                'email' => 'adobszay@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $feri = User::factory()->create([
+                'name' => 'Zatykó Ferenc',
+                'email' => 'fzatyko@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $levi = User::factory()->create([
+                'name' => 'Zatykó Levente',
+                'email' => 'zatykolevente@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $ilus = User::factory()->create([
+                'name' => 'Zatykó Ilona',
+                'email' => 'zatykoilus@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $timi = User::factory()->create([
+                'name' => 'Zatykó Tímea',
+                'email' => 'zatykotimi@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $marci = User::factory()->create([
+                'name' => 'Dobszay Márton Benedek',
+                'email' => 'dobbmar@gmail.com',
+                'password' => Hash::make('123456'), // ⬅️ Hash::make()
+                'jogosultsagi_szint' => 'felhasznalo',
+            ]);
+
+      $etterem = User::factory()->create([
+          'name' => 'Virág étterem',
           'email' => 'kati@gmail.hu',
           'password' => Hash::make('123456'), // ⬅️ Hash::make()
-          'jogosultsagi_szint' => 'felhasznalo',
+          'jogosultsagi_szint' => 'nezo',
       ]);
 
-     User::factory()->create([
-          'name' => 'Test Admin',
-          'email' => 'xxxl72845@gmail.hu',
-          'password' => Hash::make('1234567'), // ⬅️ Hash::make()
-          'jogosultsagi_szint' => 'admin',
-      ]);
+//Csoportok
+        $agi->csoportok()->attach($agiCsoport->id);
 
-      // Eloquent használata DB::table helyett
-      $agi->csoportok()->attach($agiCsoport->id);
-      $luca->csoportok()->attach($agiCsoport->id);
-      $mate->csoportok()->attach($mateCsoport->id);
+        $mate->csoportok()->attach($mateCsoport->id);
+        $nelli->csoportok()->attach($mateCsoport->id);
 
-        
-        Menu::create([
-            'datum' => '2025.07.01',
-            'foetel_A' => 'Sajtos tejfölös spagetti',
-            'foetel_B' => 'Rántott hús rizzsel',
-            'foetel_C' => 'Tojásos nokedli',
-            'leves' => 'Húsleves',
-        ]);
+        $cfluca->csoportok()->attach($lucaCsoport->id);
+        $adorjan->csoportok()->attach($lucaCsoport->id);
 
-        Menu::create([
-            'datum' => '2025.07.02',
-            'foetel_A' => 'Sajtos tejfölös spagetti',
-            'foetel_B' => 'Rántott hús rizzsel',
-            'foetel_C' => 'Tojásos nokedli',
-            'leves' => 'Borsóleves',
-        ]);
+        $tamas->csoportok()->attach($tamasCsoport->id);
+        $jutka->csoportok()->attach($tamasCsoport->id);
 
-        // ✅ 5. Rendelések (etels)
-        Etel::create([
+        $zsofi->csoportok()->attach($zsofiCsoport->id);
+        $andris->csoportok()->attach($zsofiCsoport->id);
+
+        $peter->csoportok()->attach($peterCsoport->id);
+        $ili->csoportok()->attach($peterCsoport->id);
+
+        $david->csoportok()->attach($davidCsoport->id);
+
+        $janos->csoportok()->attach($janosCsoport->id);
+        $titi->csoportok()->attach($janosCsoport->id);
+        $dorka->csoportok()->attach($janosCsoport->id);
+
+        $klara->csoportok()->attach($klaraCsoport->id);
+        $hagoston->csoportok()->attach($klaraCsoport->id);
+
+        $miklos->csoportok()->attach($miklosCsoport->id);
+        $dtimi->csoportok()->attach($miklosCsoport->id);
+
+        $seszter->csoportok()->attach($eszterCsoport->id);
+        $sagoston->csoportok()->attach($eszterCsoport->id);
+
+        $kati->csoportok()->attach($katiCsoport->id);
+        $szergely->csoportok()->attach($katiCsoport->id);
+
+        $gergo->csoportok()->attach($gergoCsoport->id);
+        $bea->csoportok()->attach($gergoCsoport->id);
+        $magyi->csoportok()->attach($gergoCsoport->id);
+
+        $balint->csoportok()->attach($balintCsoport->id);
+
+        $maresz->csoportok()->attach($mareszCsoport->id);
+        $fmagyas->csoportok()->attach($mareszCsoport->id);
+
+        $rita->csoportok()->attach($ritaCsoport->id);
+        $kpeter->csoportok()->attach($ritaCsoport->id);
+
+        $ambrus->csoportok()->attach($ambrusCsoport->id);
+        $marcsi->csoportok()->attach($ambrusCsoport->id);
+
+        $balazs->csoportok()->attach($balazsCsoport->id);
+        $ddeszter->csoportok()->attach($balazsCsoport->id);
+
+        $julcsi->csoportok()->attach($julcsiCsoport->id);
+        $balu->csoportok()->attach($julcsiCsoport->id);
+
+        $bori->csoportok()->attach($boriCsoport->id);
+        $dani->csoportok()->attach($boriCsoport->id);
+
+        $panna->csoportok()->attach($pannaCsoport->id);
+        $feri->csoportok()->attach($pannaCsoport->id);
+        $levi->csoportok()->attach($pannaCsoport->id);
+        $ilus->csoportok()->attach($pannaCsoport->id);
+        $timi->csoportok()->attach($pannaCsoport->id);
+
+        $marci->csoportok()->attach($marciCsoport->id);
+
+        $etterem->csoportok()->attach($etteremCsoport->id);
+
+Beallitas::create([
+    'kulcs' => 'kezdo_datum',
+    'ertek' => '2025-07-01',
+]);
+
+
+$kezdoDatum = Carbon::create(
+    Beallitas::where('kulcs', 'kezdo_datum')->value('ertek')
+);
+
+
+$menuk = [
+    ['Sajtos tejfölös spagetti', 'Borsostokány tésztával', 'Görögapró pecsenye hasábkrumpli', 'Kertészleves'],
+    ['Bolonai spagetti', 'Sóskamártás tojás burgonya', 'Csirkemellpaprikás házi tarhonya', 'Borsóleves'],
+    ['Vadas csőtészta', 'Zöldbabfőzelék fasírozott', 'Gombás szelet rizs', 'Húsleves'],
+    ['Sertéspaprikás tészta', 'Brokkoli főzelék fasírozott', 'Brassói aprópecsenye hasáb', 'Tojásleves'],
+    ['Túrós tészta', 'Töltött paprika burgonya', 'Lecsós szelet nokedli', 'Zöldségleves'],
+    ['', 'Csirkepaprikás tészta', '', 'Borsóleves'],
+    ['', 'Rántott hús rizzsel', '', '-'],
+];
+
+foreach ($menuk as $i => $etel) {
+    Menu::create([
+        'datum' => $kezdoDatum->copy()->addDays($i)->format('Y-m-d'), // ⬅️ Y-m-d
+        'foetel_A' => $etel[0],
+        'foetel_B' => $etel[1],
+        'foetel_C' => $etel[2],
+        'leves' => $etel[3],
+    ]);
+}
+
+//Hétfő
+Etel::create([
             'csoport_id' => $agiCsoport->id,
             'nev' => 'Ági',
-            'datum' => '2025.07.01',
-            'adag_A' => 2,
-            'adag_B' => 0,
-            'adag_C' => 1,
-            'leves_adag' => ' ',
-        ]);
-
-        Etel::create([
-            'csoport_id' => $mateCsoport->id,
-            'nev' => 'Mátéék',
-            'datum' => '2025.07.01',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'), 
             'adag_A' => 0,
             'adag_B' => 0,
-            'adag_C' => 1,
+            'adag_C' => 0,
             'leves_adag' => ' ',
         ]);
-
-        Etel::create([
-            'csoport_id' => $agiCsoport->id,
-            'nev' => 'Ági',
-            'datum' => '2025.07.02',
-            'adag_A' => 1,
-            'adag_B' => 1,
+Etel::create([
+            'csoport_id' => $mateCsoport->id,
+            'nev' => 'Mátéék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $lucaCsoport->id,
+            'nev' => 'Lucáék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $tamasCsoport->id,
+            'nev' => 'Tamasék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $zsofiCsoport->id,
+            'nev' => 'Zsófiék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'), 
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $peterCsoport->id,
+            'nev' => 'Péterék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $davidCsoport->id,
+            'nev' => 'Dávid',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $janosCsoport->id,
+            'nev' => 'Jánosék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $klaraCsoport->id,
+            'nev' => 'Kláráék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $miklosCsoport->id,
+            'nev' => 'Miklósék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $eszterCsoport->id,
+            'nev' => 'Eszterék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $katiCsoport->id,
+            'nev' => 'Katiék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $gergoCsoport->id,
+            'nev' => 'Gergőék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $balintCsoport->id,
+            'nev' => 'Bálint',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $mareszCsoport->id,
+            'nev' => 'Mareszék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $ritaCsoport->id,
+            'nev' => 'Ritáék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'), 
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $ambrusCsoport->id,
+            'nev' => 'Ambrusék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'), 
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $julcsiCsoport->id,
+            'nev' => 'Balázsék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $julcsiCsoport->id,
+            'nev' => 'Julcsiék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $boriCsoport->id,
+            'nev' => 'Boriék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'), 
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $pannaCsoport->id,
+            'nev' => 'Pannáék',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'), 
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $marciCsoport->id,
+            'nev' => 'Marci',
+            'datum' => $kezdoDatum->copy()->addDays(0)->format('Y-m-d'), 
+            'adag_A' => 0,
+            'adag_B' => 0,
             'adag_C' => 0,
             'leves_adag' => ' ',
         ]);
 
-        Etel::create([
-            'csoport_id' => $mateCsoport->id,
-            'nev' => 'Mátéék',
-            'datum' => '2025.07.02',
+//Kedd
+Etel::create([
+            'csoport_id' => $agiCsoport->id,
+            'nev' => 'Ági',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
             'adag_A' => 0,
             'adag_B' => 0,
-            'adag_C' => 1,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $mateCsoport->id,
+            'nev' => 'Mátéék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $lucaCsoport->id,
+            'nev' => 'Lucáék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $tamasCsoport->id,
+            'nev' => 'Tamasék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $zsofiCsoport->id,
+            'nev' => 'Zsófiék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $peterCsoport->id,
+            'nev' => 'Péterék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $davidCsoport->id,
+            'nev' => 'Dávid',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $janosCsoport->id,
+            'nev' => 'Jánosék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $klaraCsoport->id,
+            'nev' => 'Kláráék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $miklosCsoport->id,
+            'nev' => 'Miklósék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $eszterCsoport->id,
+            'nev' => 'Eszterék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $katiCsoport->id,
+            'nev' => 'Katiék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $gergoCsoport->id,
+            'nev' => 'Gergőék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $balintCsoport->id,
+            'nev' => 'Bálint',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $mareszCsoport->id,
+            'nev' => 'Mareszék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $ritaCsoport->id,
+            'nev' => 'Ritáék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $ambrusCsoport->id,
+            'nev' => 'Ambrusék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $balazsCsoport->id,
+            'nev' => 'Balázsék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $julcsiCsoport->id,
+            'nev' => 'Julcsiék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $boriCsoport->id,
+            'nev' => 'Boriék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $pannaCsoport->id,
+            'nev' => 'Pannáék',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $marciCsoport->id,
+            'nev' => 'Marci',
+            'datum' => $kezdoDatum->copy()->addDays(1)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
             'leves_adag' => ' ',
         ]);
 
+//Szerda
+Etel::create([
+            'csoport_id' => $agiCsoport->id,
+            'nev' => 'Ági',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $mateCsoport->id,
+            'nev' => 'Mátéék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $lucaCsoport->id,
+            'nev' => 'Lucáék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $tamasCsoport->id,
+            'nev' => 'Tamasék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $zsofiCsoport->id,
+            'nev' => 'Zsófiék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $peterCsoport->id,
+            'nev' => 'Péterék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $davidCsoport->id,
+            'nev' => 'Dávid',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $janosCsoport->id,
+            'nev' => 'Jánosék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $klaraCsoport->id,
+            'nev' => 'Kláráék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $miklosCsoport->id,
+            'nev' => 'Miklósék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $eszterCsoport->id,
+            'nev' => 'Eszterék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $katiCsoport->id,
+            'nev' => 'Katiék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $gergoCsoport->id,
+            'nev' => 'Gergőék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $balintCsoport->id,
+            'nev' => 'Bálint',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $mareszCsoport->id,
+            'nev' => 'Mareszék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $ritaCsoport->id,
+            'nev' => 'Ritáék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $ambrusCsoport->id,
+            'nev' => 'Ambrusék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $balazsCsoport->id,
+            'nev' => 'Balázsék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $julcsiCsoport->id,
+            'nev' => 'Julcsiék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $boriCsoport->id,
+            'nev' => 'Boriék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $pannaCsoport->id,
+            'nev' => 'Pannáék',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $marciCsoport->id,
+            'nev' => 'Marci',
+            'datum' => $kezdoDatum->copy()->addDays(2)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+
+//Csütörtök
+Etel::create([
+            'csoport_id' => $agiCsoport->id,
+            'nev' => 'Ági',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $mateCsoport->id,
+            'nev' => 'Mátéék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $lucaCsoport->id,
+            'nev' => 'Lucáék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $tamasCsoport->id,
+            'nev' => 'Tamasék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $zsofiCsoport->id,
+            'nev' => 'Zsófiék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $peterCsoport->id,
+            'nev' => 'Péterék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $davidCsoport->id,
+            'nev' => 'Dávid',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $janosCsoport->id,
+            'nev' => 'Jánosék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $klaraCsoport->id,
+            'nev' => 'Kláráék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $miklosCsoport->id,
+            'nev' => 'Miklósék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $eszterCsoport->id,
+            'nev' => 'Eszterék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $katiCsoport->id,
+            'nev' => 'Katiék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $gergoCsoport->id,
+            'nev' => 'Gergőék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $balintCsoport->id,
+            'nev' => 'Bálint',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $mareszCsoport->id,
+            'nev' => 'Mareszék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $ritaCsoport->id,
+            'nev' => 'Ritáék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $ambrusCsoport->id,
+            'nev' => 'Ambrusék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $balazsCsoport->id,
+            'nev' => 'Balázsék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $julcsiCsoport->id,
+            'nev' => 'Julcsiék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $boriCsoport->id,
+            'nev' => 'Boriék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $pannaCsoport->id,
+            'nev' => 'Pannáék',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $marciCsoport->id,
+            'nev' => 'Marci',
+            'datum' => $kezdoDatum->copy()->addDays(3)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+
+//Péntek
+Etel::create([
+            'csoport_id' => $agiCsoport->id,
+            'nev' => 'Ági',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $mateCsoport->id,
+            'nev' => 'Mátéék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $lucaCsoport->id,
+            'nev' => 'Lucáék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $tamasCsoport->id,
+            'nev' => 'Tamasék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $zsofiCsoport->id,
+            'nev' => 'Zsófiék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $peterCsoport->id,
+            'nev' => 'Péterék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $davidCsoport->id,
+            'nev' => 'Dávid',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $janosCsoport->id,
+            'nev' => 'Jánosék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $klaraCsoport->id,
+            'nev' => 'Kláráék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $miklosCsoport->id,
+            'nev' => 'Miklósék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $eszterCsoport->id,
+            'nev' => 'Eszterék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $katiCsoport->id,
+            'nev' => 'Katiék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $gergoCsoport->id,
+            'nev' => 'Gergőék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $balintCsoport->id,
+            'nev' => 'Bálint',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $mareszCsoport->id,
+            'nev' => 'Mareszék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $ritaCsoport->id,
+            'nev' => 'Ritáék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $ambrusCsoport->id,
+            'nev' => 'Ambrusék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $balazsCsoport->id,
+            'nev' => 'Balázsék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $julcsiCsoport->id,
+            'nev' => 'Julcsiék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $boriCsoport->id,
+            'nev' => 'Boriék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $pannaCsoport->id,
+            'nev' => 'Pannáék',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $marciCsoport->id,
+            'nev' => 'Marci',
+            'datum' => $kezdoDatum->copy()->addDays(4)->format('Y-m-d'),
+            'adag_A' => 0,
+            'adag_B' => 0,
+            'adag_C' => 0,
+            'leves_adag' => ' ',
+        ]);
+
+//Szombat
+Etel::create([
+            'csoport_id' => $agiCsoport->id,
+            'nev' => 'Ági',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $mateCsoport->id,
+            'nev' => 'Mátéék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $lucaCsoport->id,
+            'nev' => 'Lucáék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $tamasCsoport->id,
+            'nev' => 'Tamasék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $zsofiCsoport->id,
+            'nev' => 'Zsófiék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $peterCsoport->id,
+            'nev' => 'Péterék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $davidCsoport->id,
+            'nev' => 'Dávid',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $janosCsoport->id,
+            'nev' => 'Jánosék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $klaraCsoport->id,
+            'nev' => 'Kláráék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $miklosCsoport->id,
+            'nev' => 'Miklósék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $eszterCsoport->id,
+            'nev' => 'Eszterék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $katiCsoport->id,
+            'nev' => 'Katiék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $gergoCsoport->id,
+            'nev' => 'Gergőék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $balintCsoport->id,
+            'nev' => 'Bálint',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $mareszCsoport->id,
+            'nev' => 'Mareszék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $ritaCsoport->id,
+            'nev' => 'Ritáék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $ambrusCsoport->id,
+            'nev' => 'Ambrusék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $balazsCsoport->id,
+            'nev' => 'Balázsék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $julcsiCsoport->id,
+            'nev' => 'Julcsiék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $boriCsoport->id,
+            'nev' => 'Boriék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $pannaCsoport->id,
+            'nev' => 'Pannáék',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $marciCsoport->id,
+            'nev' => 'Marci',
+            'datum' => $kezdoDatum->copy()->addDays(5)->format('Y-m-d'),
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+
+//Vasárnap
+Etel::create([
+            'csoport_id' => $agiCsoport->id,
+            'nev' => 'Ági',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $mateCsoport->id,
+            'nev' => 'Mátéék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $lucaCsoport->id,
+            'nev' => 'Lucáék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $tamasCsoport->id,
+            'nev' => 'Tamasék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $zsofiCsoport->id,
+            'nev' => 'Zsófiék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $peterCsoport->id,
+            'nev' => 'Péterék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $davidCsoport->id,
+            'nev' => 'Dávid',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $janosCsoport->id,
+            'nev' => 'Jánosék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $klaraCsoport->id,
+            'nev' => 'Kláráék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $miklosCsoport->id,
+            'nev' => 'Miklósék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $eszterCsoport->id,
+            'nev' => 'Eszterék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $katiCsoport->id,
+            'nev' => 'Katiék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $gergoCsoport->id,
+            'nev' => 'Gergőék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $balintCsoport->id,
+            'nev' => 'Bálint',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $mareszCsoport->id,
+            'nev' => 'Mareszék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $ritaCsoport->id,
+            'nev' => 'Ritáék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $ambrusCsoport->id,
+            'nev' => 'Ambrusék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $balazsCsoport->id,
+            'nev' => 'Balázsék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $julcsiCsoport->id,
+            'nev' => 'Julcsiék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $boriCsoport->id,
+            'nev' => 'Boriék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $pannaCsoport->id,
+            'nev' => 'Pannáék',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
+Etel::create([
+            'csoport_id' => $marciCsoport->id,
+            'nev' => 'Marci',
+            'datum' => $kezdoDatum->copy()->addDays(6)->format('Y-m-d'), // 7. nap
+            'adag_A' => null,
+            'adag_B' => 0,
+            'adag_C' => null,
+            'leves_adag' => ' ',
+        ]);
 
         //családi adatok felvitele
         familydata::factory()->create([
@@ -1793,26 +3523,26 @@ class DatabaseSeeder extends Seeder
             'szoba_id' => 'F1/1',
             'nev' => '1. Faház',
             'max' => 2,
-            'lakok' => ['Eszter', 'Buszti', 'Sajka']
+            'lakok' => ['Bori', 'Dani', 'János', 'Soma']
         ]);
 
         Room::factory()->create([
             'szoba_id' => 'F1/2',
             'max' => 2,
-            'lakok' => ['Dávid']
+            'lakok' => ['Ambrus']
         ]);
 
         Room::factory()->create([
             'szoba_id' => 'F2/1',
             'nev' => '2. Faház',
             'max' => 2,
-            'lakok' => ['Luca', 'Adorján']
+            'lakok' => ['Zsófi', 'Andris', 'Marci', 'Misi', 'Júlia']
         ]);
 
         Room::factory()->create([
             'szoba_id' => 'F2/2',
             'max' => 2,
-            'lakok' => ['Veronika', 'Rozi', 'Adél']
+            'lakok' => ['']
         ]);
 
         Room::factory()->create([
@@ -1825,34 +3555,103 @@ class DatabaseSeeder extends Seeder
         Room::factory()->create([
             'szoba_id' => 'F3/2',
             'max' => 2,
-            'lakok' => ['Bálint', 'Noémi']
-        ]);
-
-        Room::factory()->create([
-            'szoba_id' => 'F3/3',
-            'max' => 1,
-            'lakok' => ['Matyi']
+            'lakok' => ['Bálint', 'Rita', 'K. Peti']
         ]);
 
         Room::factory()->create([
             'szoba_id' => 'F4/1',
             'nev' => '4. Faház',
             'max' => 2,
-            'lakok' => ['Miklós', 'Timi', 'Beni']
+            'lakok' => ['Luca', 'Adorján', 'Veronika']
         ]);
 
         Room::factory()->create([
             'szoba_id' => 'F4/2',
             'max' => 2,
-            'lakok' => ['Lívia', 'Vili']
+            'lakok' => ['Rozália', 'Adél']
         ]);
 
         Room::factory()->create([
             'szoba_id' => 'Fszt1',
             'max' => 3,
-            'lakok' => ['Zsófi', 'András', 'Marci', 'Misi', 'Juli']
+            'lakok' => ['Miklós', 'Timi', 'Lívia', 'Vili', 'Beni']
+        ]);
+        Room::factory()->create([
+            'szoba_id' => 'Fszt2',
+            'max' => 3,
+            'lakok' => ['Balázs', 'Eszter', 'Boldizsár', 'Éva', 'Luca']
+        ]);
+        Room::factory()->create([
+            'szoba_id' => 'Fszt3',
+            'max' => 3,
+            'lakok' => ['Kati', 'Szergely', 'Bogi', 'Janka', 'Beni']
+        ]);
+        Room::factory()->create([
+            'szoba_id' => 'Fszt4',
+            'max' => 3,
+            'lakok' => ['Julcsi', 'Balu', 'Barnus']
+        ]);
+        Room::factory()->create([
+            'szoba_id' => 'Fszt5',
+            'max' => 3,
+            'lakok' => ['Levi']
+        ]);
+        Room::factory()->create([
+            'szoba_id' => 'Fszt6',
+            'max' => 3,
+            'lakok' => ['Nelli, Máté']
+        ]);
+        Room::factory()->create([
+            'szoba_id' => 'Fszt7',
+            'max' => 3,
+            'lakok' => ['Dávid']
+        ]);
+        Room::factory()->create([
+            'szoba_id' => 'Fszt8',
+            'max' => 3,
+            'lakok' => ['Marci']
         ]);
 
+        Room::factory()->create([
+            'szoba_id' => 'Em1',
+            'max' => 3,
+            'lakok' => ['Ági']
+        ]);
+        Room::factory()->create([
+            'szoba_id' => 'Em2',
+            'max' => 3,
+            'lakok' => ['Panna, Feri']
+        ]);
+        Room::factory()->create([
+            'szoba_id' => 'E3',
+            'max' => 3,
+            'lakok' => ['Bea, Gergő, Matyi']
+        ]);
+        Room::factory()->create([
+            'szoba_id' => 'E4',
+            'max' => 3,
+            'lakok' => ['János, Titi']
+        ]);
+        Room::factory()->create([
+            'szoba_id' => 'E5',
+            'max' => 3,
+            'lakok' => ['Klára, Ágoston, Botond, Csongor, Zsombor']
+        ]);
+        Room::factory()->create([
+            'szoba_id' => 'E6',
+            'max' => 3,
+            'lakok' => ['Péter, Ili, Lackó, Anna']
+        ]);
+        Room::factory()->create([
+            'szoba_id' => 'E7',
+            'max' => 3,
+            'lakok' => ['Eszter, Ágostos, Bori, BAlázs, Dávid']
+        ]);
+        Room::factory()->create([
+            'szoba_id' => 'E8',
+            'max' => 3,
+            'lakok' => ['Dorka, Ilus, Timi']
+        ]);
 
 
     }
