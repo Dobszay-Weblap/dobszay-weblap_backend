@@ -13,6 +13,7 @@ use App\Http\Controllers\SzabalyController;
 use App\Http\Controllers\FoglaltsagController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\BeallitasController;
+use App\Http\Controllers\KorabbiEvController;
 use App\Http\Middleware\Admin;
 use App\Models\Csoportok;
 
@@ -66,6 +67,42 @@ Route::middleware('auth:sanctum')->group(function () {
     // Szobák megtekintése
     Route::get('rooms', [RoomController::class, 'index']);
     Route::get('rooms/{id}', [RoomController::class, 'show']);
+
+
+    // Év adatainak lekérése
+Route::get('/korabbiev/{year}', [KorabbiEvController::class, 'getDataByYear']);
+
+// Kép feltöltése
+Route::post('/korabbiev/{year}/upload-image', [KorabbiEvController::class, 'uploadImage']);
+
+// Videó feltöltése
+Route::post('/korabbiev/{year}/upload-video', [KorabbiEvController::class, 'uploadVideo']);
+
+// Kép törlése
+Route::delete('/korabbiev/{year}/delete-image', [KorabbiEvController::class, 'deleteImage']);
+
+// Videó törlése
+Route::delete('/korabbiev/{year}/delete-video', [KorabbiEvController::class, 'deleteVideo']);
+
+// Összes kép listázása
+Route::get('/images', function () {
+    $files = File::files(public_path('kepek'));
+    $images = collect($files)->map(function ($file) {
+        return url('kepek/' . $file->getFilename());
+    });
+    return response()->json($images);
+});
+
+// Összes videó listázása
+Route::get('/videos', function () {
+    $files = File::files(public_path('videok'));
+    $videos = collect($files)->map(function ($file) {
+        return url('videok/' . $file->getFilename());
+    });
+    return response()->json($videos);
+});
+
+
 });
 
 
@@ -104,37 +141,3 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::delete('/foglaltsag/osszes', [FoglaltsagController::class, 'osszesTorol']);
 });
 
-
-
-
-
-
-Route::get('/insert-test-data', [KorabbiEvController::class, 'insertTestData']);
-
-
-Route::get('/korabbiev/{year}', [KorabbiEvController::class, 'getDataByYear']);
-
-
-
-Route::get('/test', function () {
-    return response()->json(['message' => 'A backend működik!']);
-});
-
-
-Route::get('/videos', function () {
-    $files = File::files(public_path('videok')); // A 'videok' mappa fájljai
-    $videos = collect($files)->map(function ($file) {
-        return url('videok/' . $file->getFilename()); // Generálja az URL-t
-    });
-
-    return response()->json($videos);
-});
-
-Route::get('/images', function () {
-    $files = File::files(public_path('kepek')); // A 'kepek' mappa fájljai
-    $images = collect($files)->map(function ($file) {
-        return url('kepek/' . $file->getFilename()); // Generálja az URL-t
-    });
-
-    return response()->json($images);
-});

@@ -13,26 +13,25 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('korabbi_evs', function (Blueprint $table) {
-            $table->id(); // Egyedi azonosító
-            $table->string('year'); // Az év, pl. "2023"
-            $table->json('kepek'); // Képek JSON formátumban (hivatkozások)
-            $table->json('videok'); // Videók JSON formátumban (hivatkozások)
-            $table->timestamps(); // A rekord létrehozásának és frissítésének ideje
+            $table->id();
+            $table->string('year');
+            $table->json('kepek');
+            $table->json('videok');
+            $table->timestamps();
         });
         
         DB::table('korabbi_evs')->insert([
             'year' => '2023',
             'kepek' => json_encode([
                 'kepek/jatek.jpg',
-                'kepek/jatek_2.jpg'
             ]),
             'videok' => json_encode([
-                'video/Anya.mp4',
-                'video/Tejhabos.mp4'
+                'videok/Anya.mp4',
+                'videok/Tejhabos.mp4'
             ]),
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
-        
-        
     }
 
     /**
