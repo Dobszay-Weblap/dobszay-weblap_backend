@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Szatmári Kornélia (Nelli)',
                 'email' => 'nellisz@gmail.com',
                 'password' => Hash::make('123456'), // ⬅️ Hash::make()
-                'jogosultsagi_szint' => 'admin',
+                'jogosultsagi_szint' => 'felhasznalo',
             ]);      
 
       $cfluca = User::factory()->create([
@@ -3521,138 +3521,200 @@ Etel::create([
 
         Room::factory()->create([
             'szoba_id' => 'F1/1',
+            'fahaz_id' => 'f1',
             'nev' => '1. Faház',
-            'max' => 2,
+            'max' => 4,
             'lakok' => ['Bori', 'Dani', 'János', 'Soma']
         ]);
 
         Room::factory()->create([
             'szoba_id' => 'F1/2',
+            'fahaz_id' => 'f1',
+            'nev' => '1. Faház',
             'max' => 2,
             'lakok' => ['Ambrus']
         ]);
 
+        // FAHÁZAK - F2
         Room::factory()->create([
             'szoba_id' => 'F2/1',
+            'fahaz_id' => 'f2',
             'nev' => '2. Faház',
-            'max' => 2,
+            'max' => 5,
             'lakok' => ['Zsófi', 'Andris', 'Marci', 'Misi', 'Júlia']
         ]);
 
         Room::factory()->create([
             'szoba_id' => 'F2/2',
+            'fahaz_id' => 'f2',
+            'nev' => '2. Faház',
             'max' => 2,
-            'lakok' => ['']
+            'lakok' => []
         ]);
 
+        // FAHÁZAK - F3
         Room::factory()->create([
             'szoba_id' => 'F3/1',
+            'fahaz_id' => 'f3',
             'nev' => '3. Faház',
-            'max' => 2,
+            'max' => 3,
             'lakok' => ['Marcsi', 'F. Matyi', 'Kinga']
         ]);
 
         Room::factory()->create([
             'szoba_id' => 'F3/2',
-            'max' => 2,
+            'fahaz_id' => 'f3',
+            'nev' => '3. Faház',
+            'max' => 3,
             'lakok' => ['Bálint', 'Rita', 'K. Peti']
         ]);
 
+        // FAHÁZAK - F4
         Room::factory()->create([
             'szoba_id' => 'F4/1',
+            'fahaz_id' => 'f4',
             'nev' => '4. Faház',
-            'max' => 2,
+            'max' => 3,
             'lakok' => ['Luca', 'Adorján', 'Veronika']
         ]);
 
         Room::factory()->create([
             'szoba_id' => 'F4/2',
+            'fahaz_id' => 'f4',
+            'nev' => '4. Faház',
             'max' => 2,
             'lakok' => ['Rozália', 'Adél']
         ]);
 
+        // FÖLDSZINT
         Room::factory()->create([
             'szoba_id' => 'Fszt1',
-            'max' => 3,
+            'fahaz_id' => null,
+            'nev' => 'Földszint 1',
+            'max' => 5,
             'lakok' => ['Miklós', 'Timi', 'Lívia', 'Vili', 'Beni']
         ]);
+
         Room::factory()->create([
             'szoba_id' => 'Fszt2',
-            'max' => 3,
+            'fahaz_id' => null,
+            'nev' => 'Földszint 2',
+            'max' => 5,
             'lakok' => ['Balázs', 'Eszter', 'Boldizsár', 'Éva', 'Luca']
         ]);
+
         Room::factory()->create([
             'szoba_id' => 'Fszt3',
-            'max' => 3,
+            'fahaz_id' => null,
+            'nev' => 'Földszint 3',
+            'max' => 5,
             'lakok' => ['Kati', 'Szergely', 'Bogi', 'Janka', 'Beni']
         ]);
+
         Room::factory()->create([
             'szoba_id' => 'Fszt4',
+            'fahaz_id' => null,
+            'nev' => 'Földszint 4',
             'max' => 3,
             'lakok' => ['Julcsi', 'Balu', 'Barnus']
         ]);
+
         Room::factory()->create([
             'szoba_id' => 'Fszt5',
+            'fahaz_id' => null,
+            'nev' => 'Földszint 5',
             'max' => 3,
             'lakok' => ['Levi']
         ]);
+
         Room::factory()->create([
             'szoba_id' => 'Fszt6',
+            'fahaz_id' => null,
+            'nev' => 'Földszint 6',
             'max' => 3,
-            'lakok' => ['Nelli, Máté']
+            'lakok' => ['Nelli', 'Máté']
         ]);
+
         Room::factory()->create([
             'szoba_id' => 'Fszt7',
+            'fahaz_id' => null,
+            'nev' => 'Földszint 7',
             'max' => 3,
             'lakok' => ['Dávid']
         ]);
+
         Room::factory()->create([
             'szoba_id' => 'Fszt8',
+            'fahaz_id' => null,
+            'nev' => 'Földszint 8',
             'max' => 3,
             'lakok' => ['Marci']
         ]);
 
+        // EMELET
         Room::factory()->create([
             'szoba_id' => 'Em1',
+            'fahaz_id' => null,
+            'nev' => 'Emelet 1',
             'max' => 3,
             'lakok' => ['Ági']
         ]);
+
         Room::factory()->create([
             'szoba_id' => 'Em2',
+            'fahaz_id' => null,
+            'nev' => 'Emelet 2',
             'max' => 3,
-            'lakok' => ['Panna, Feri']
-        ]);
-        Room::factory()->create([
-            'szoba_id' => 'E3',
-            'max' => 3,
-            'lakok' => ['Bea, Gergő, Matyi']
-        ]);
-        Room::factory()->create([
-            'szoba_id' => 'E4',
-            'max' => 3,
-            'lakok' => ['János, Titi']
-        ]);
-        Room::factory()->create([
-            'szoba_id' => 'E5',
-            'max' => 3,
-            'lakok' => ['Klára, Ágoston, Botond, Csongor, Zsombor']
-        ]);
-        Room::factory()->create([
-            'szoba_id' => 'E6',
-            'max' => 3,
-            'lakok' => ['Péter, Ili, Lackó, Anna']
-        ]);
-        Room::factory()->create([
-            'szoba_id' => 'E7',
-            'max' => 3,
-            'lakok' => ['Eszter, Ágostos, Bori, BAlázs, Dávid']
-        ]);
-        Room::factory()->create([
-            'szoba_id' => 'E8',
-            'max' => 3,
-            'lakok' => ['Dorka, Ilus, Timi']
+            'lakok' => ['Panna', 'Feri']
         ]);
 
+        Room::factory()->create([
+            'szoba_id' => 'E3',
+            'fahaz_id' => null,
+            'nev' => 'Emelet 3',
+            'max' => 3,
+            'lakok' => ['Bea', 'Gergő', 'Matyi']
+        ]);
+
+        Room::factory()->create([
+            'szoba_id' => 'E4',
+            'fahaz_id' => null,
+            'nev' => 'Emelet 4',
+            'max' => 3,
+            'lakok' => ['János', 'Titi']
+        ]);
+
+        Room::factory()->create([
+            'szoba_id' => 'E5',
+            'fahaz_id' => null,
+            'nev' => 'Emelet 5',
+            'max' => 5,
+            'lakok' => ['Klára', 'Ágoston', 'Botond', 'Csongor', 'Zsombor']
+        ]);
+
+        Room::factory()->create([
+            'szoba_id' => 'E6',
+            'fahaz_id' => null,
+            'nev' => 'Emelet 6',
+            'max' => 5,
+            'lakok' => ['Péter', 'Ili', 'Lackó', 'Anna']
+        ]);
+
+        Room::factory()->create([
+            'szoba_id' => 'E7',
+            'fahaz_id' => null,
+            'nev' => 'Emelet 7',
+            'max' => 5,
+            'lakok' => ['Eszter', 'Ágostos', 'Bori', 'Balázs', 'Dávid']
+        ]);
+
+        Room::factory()->create([
+            'szoba_id' => 'E8',
+            'fahaz_id' => null,
+            'nev' => 'Emelet 8',
+            'max' => 3,
+            'lakok' => ['Dorka', 'Ilus', 'Timi']
+        ]);
 
     }
 }

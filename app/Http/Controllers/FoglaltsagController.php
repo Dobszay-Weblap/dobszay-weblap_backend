@@ -114,4 +114,71 @@ class FoglaltsagController extends Controller
         // Visszaadjuk a frissített listát
         return $this->index();
     }
+
+   public function osszesTorol(Request $request)
+{
+    // Ellenőrizzük, hogy a felhasználó be van-e jelentkezve
+    $user = auth()->user(); // vagy: $request->user();
+
+    if (!$user) {
+        return response()->json(['error' => 'Nem vagy bejelentkezve'], 401);
+    }
+
+    // Ellenőrizzük, hogy admin-e
+    if ($user->jogosultsagi_szint !== 'admin') {
+        return response()->json(['error' => 'Nincs jogosultságod ehhez a művelethez'], 403);
+    }
+
+    // Lekérjük az összes szobát
+    $szobak = \App\Models\Room::all();
+
+    foreach ($szobak as $szoba) {
+        $szoba->lakok = json_encode([]); // Kiürítjük a lakókat
+        $szoba->save();
+    }
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Minden lakó törölve lett.',
+        'torolve' => $szobak->count()
+    ]);
+}
+
+public function destroyLako(Request $request)
+{
+    $roomId = $request->query('roomId');
+    $index = $request->query('index');
+    $szoba = Room::where('szoba_id', $roomId)->first();
+
+    if (!$szoba) {
+        return response()->json(['error' => 'Szoba nem található'], 404);
+    }
+
+    // Dekódoljuk a lakókat
+    $lakok = is_string($szoba->lakok) 
+        ? json_decode($szoba->lakok, true) 
+        : $szoba->lakok;
+    
+    if (!is_array($lakok)) {
+        return response()->json(['error' => 'Nincs lakó a szobában'], 400);
+    }
+
+    // Ellenőrizzük hogy létezik-e az index
+    if (!isset($lakok[$index])) {
+        return response()->json(['error' => 'Lakó nem található ezen az indexen'], 404);
+    }
+
+    // Eltávolítjuk az adott lakót
+    array_splice($lakok, $index, 1);
+    
+    $szoba->lakok = json_encode($lakok);
+    $szoba->save();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Lakó sikeresen törölve'
+    ]);
+}
+
+
 }

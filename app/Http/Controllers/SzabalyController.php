@@ -16,19 +16,10 @@ class SzabalyController extends Controller
 public function update(Request $request, $id)
 {
 
-    $request->validate([
-            'felso_cim' =>'sometimes|required|string',
-            'also_cim' =>'sometimes|required|string',
-            'gondnok_nev'  =>'sometimes|required|string',
-            'wifi_nev' =>'sometimes|required|string',
-            'wifi_jelszo'=>'sometimes|required|string',
-            'csendes_piheno'=>'sometimes|required|text',
-            'malacszolgalat'=>'sometimes|required|text',
-        ]);
-        
-    $szabaly = Szabaly::find($id);
-        $szabaly->fill($request->all());
-        $szabaly->save();
+        $szabaly = Szabaly::findOrFail($id);
+        $szabaly->update($request->all());
+        return response()->json($szabaly);
 }
+
 
 }

@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->string('szoba_id');
-            $table->string('fahaz_id'); // ÚJ MEZŐ A FAHÁZ AZONOSÍTÓHOZ
+            $table->string('fahaz_id')->nullable(); // ÚJ MEZŐ A FAHÁZ AZONOSÍTÓHOZ
             $table->string('nev')->nullable();
             $table->integer('max');
             $table->json('lakok')->nullable();
