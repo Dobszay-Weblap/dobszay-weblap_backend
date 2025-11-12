@@ -23,11 +23,10 @@ return new class extends Migration
         DB::table('korabbi_evs')->insert([
             'year' => '2023',
             'kepek' => json_encode([
-                'kepek/jatek.jpg',
+                
             ]),
             'videok' => json_encode([
-                'videok/Anya.mp4',
-                'videok/Tejhabos.mp4'
+                
             ]),
             'created_at' => now(),
             'updated_at' => now()

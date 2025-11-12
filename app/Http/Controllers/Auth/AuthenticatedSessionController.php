@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -24,12 +25,12 @@ class AuthenticatedSessionController extends Controller
             return response()->json(['message' => 'Invalid login credentials'], 401);
         }
         
-        $user = Auth::user()->load('csoportok'); // ⬇️ IDE KELL A ->load('csoportok')!
+        $user = Auth::user()->load('csoportok');
         $token = $user->createToken('auth_token')->plainTextToken;
         
         return response()->json([
-            'token' => $token, // ⬇️ Változtasd 'token'-re az 'access_token' helyett
-            'user' => $user, // Most már benne vannak a csoportok is!
+            'token' => $token,
+            'user' => $user,
             'status' => 'Login successful',
         ]);
     }
@@ -39,12 +40,15 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        $token = $request->user()->currentAccessToken();
-        
-        if ($token) {
-            $token->delete();
-        }
+        try {
+            // Az összes token törlése a felhasználóhoz
+            $request->user()->tokens()->delete();
 
-        return response()->json(['message' => 'Logout successful']);
+            return response()->json(['message' => 'Logout successful'], 200);
+            
+        } catch (\Exception $e) {
+            \Log::error('Logout error: ' . $e->getMessage());
+            return response()->json(['message' => 'Logout successful'], 200);
+        }
     }
 }

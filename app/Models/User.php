@@ -23,45 +23,30 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+
     protected $fillable = [
         'name',
         'email',
         'password',
-        'jogosultsagi_szint'
+        'jogosultsagi_szint',
+        'password_changed',  // ← Új mező hozzáadása
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+        'password_changed' => 'boolean',  // ← Boolean castolás
+    ];
 
 
 public function csoportok()
 {
-    return $this->belongsToMany(
-        Csoportok::class,
-        'csoport_user',      // pivot tábla neve
-        'user_id',           // a user id mező a pivot táblában
-        'csoport_id'       // a csoportok id mező a pivot táblában
-    );
+    return $this->belongsToMany(Csoportok::class, 'csoport_user', 'user_id', 'csoport_id');
 }
 
 

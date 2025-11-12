@@ -19,21 +19,40 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+   // EZ VOLT A ROSSZ - ez volt bejelentkezésre
+// EZ A JÓ - felhasználó létrehozásra
+public function store(Request $request)
 {
-    $validated = $request->validate([
+    $validator = Validator::make($request->all(), [
         'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users',
-        'password' => 'required|string|min:6',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|string|min:8',
     ]);
 
-    $user = new User();
-    $user->name = $validated['name'];
-    $user->email = $validated['email'];
-    $user->password = Hash::make($validated['password']);
-    $user->save();
+    if ($validator->fails()) {
+        return response()->json([
+            'message' => 'Validation failed',
+            'errors' => $validator->errors()
+        ], 422);
+    }
 
-    return response()->json($user, 201);
+    try {
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'jogosultsagi_szint' => $request->jogosultsagi_szint ?? 'felhasznalo',
+            'password_changed' => false,
+        ]);
+
+        return response()->json($user->load('csoportok'), 201);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'message' => 'User creation failed',
+            'error' => $e->getMessage()
+        ], 500);
+    }
 }
 
 
@@ -64,19 +83,68 @@ class UserController extends Controller
 }
 
 
+
+
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        User::find($id)->delete();
-    }
 
-  public function getUser() {
-    $user = Auth::user()->load('csoportok');
-    return response()->json($user);
+
+public function getUser(Request $request)
+{
+    try {
+        $user = $request->user();
+        
+        if (!$user) {
+            return response()->json(['message' => 'Unauthenticated'], 401);
+        }
+
+        // Csoportok betöltése
+        $user->load('csoportok');
+
+        return response()->json($user);
+        
+    } catch (\Exception $e) {
+        \Log::error('getUser error: ' . $e->getMessage());
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
 }
 
+public function changePasswordFirst(Request $request)
+    {
+        // Validáció
+        $validator = Validator::make($request->all(), [
+            'newPassword' => 'required|string|min:8',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'A jelszónak legalább 8 karakter hosszúnak kell lennie.',
+                'errors' => $validator->errors()
+            ], 400);
+        }
+
+        try {
+            // Bejelentkezett felhasználó
+            $user = $request->user();
+
+            // Jelszó frissítése
+            $user->password = Hash::make($request->newPassword);
+            $user->password_changed = true;
+            $user->save();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Jelszó sikeresen megváltoztatva!'
+            ], 200);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Hiba történt a jelszó változtatása során.',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
 
     
     
@@ -157,17 +225,34 @@ public function currentUser(Request $request)
         ]);
     }
 
-    // UserController-hez add hozzá ezt a metódust
-public function updateCsoportok(Request $request, User $user)
+public function updateCsoportok(Request $request, $id)  // ⬅️ Így kell!
 {
-    $request->validate([
-        'csoportok' => 'required|array',
-        'csoportok.*' => 'exists:csoportoks,id'
-    ]);
-    
-    $user->csoportok()->sync($request->csoportok);
-    
-    return $user->load('csoportok');
+    try {
+        // Manuálisan töltjük be a user-t
+        $user = User::findOrFail($id);
+        
+        $validated = $request->validate([
+            'csoportok' => 'required|array',
+            'csoportok.*' => 'exists:csoportoks,id'
+        ]);
+        
+        // Először töröljük az összes kapcsolatot
+        $user->csoportok()->detach();
+        
+        // Aztán hozzáadjuk az újakat
+        if (!empty($validated['csoportok'])) {
+            $user->csoportok()->attach($validated['csoportok']);
+        }
+        
+        return response()->json($user->load('csoportok'), 200);
+        
+    } catch (\Exception $e) {
+        \Log::error('updateCsoportok error: ' . $e->getMessage());
+        return response()->json([
+            'message' => 'Failed to update groups',
+            'error' => $e->getMessage()
+        ], 500);
+    }
 }
 
 // AuthController.php vagy UserController.php
