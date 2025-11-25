@@ -13,7 +13,7 @@ class CsoportokSeeder extends Seeder
             'Ági',
             'Mátéék',
             'Lucáék',
-            'Tamasék',
+            'Tamásék',
             'Zsófiék',
             'Péterék',
             'Dávid',

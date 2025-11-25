@@ -44,5 +44,11 @@ class RoomSeeder extends Seeder
         Room::create(['szoba_id' => 'Em6', 'fahaz_id' => null, 'nev' => 'Emelet 6', 'max' => 5, 'lakok' => []]);
         Room::create(['szoba_id' => 'Em7', 'fahaz_id' => null, 'nev' => 'Emelet 7', 'max' => 5, 'lakok' => []]);
         Room::create(['szoba_id' => 'Em8', 'fahaz_id' => null, 'nev' => 'Emelet 8', 'max' => 3, 'lakok' => []]);
-    }
+
+       // MÁSIK HÁZ - 3 nagy szoba
+        Room::create(['szoba_id' => 'Bal', 'fahaz_id' => null, 'nev' => 'Bal oldal', 'max' => 2, 'lakok' => []]);
+        Room::create(['szoba_id' => 'Kozep', 'fahaz_id' => null, 'nev' => 'Közép', 'max' => 3, 'lakok' => []]);
+        Room::create(['szoba_id' => 'Jobb', 'fahaz_id' => null, 'nev' => 'Jobb oldal', 'max' => 2, 'lakok' => []]);
+
+            }
 }

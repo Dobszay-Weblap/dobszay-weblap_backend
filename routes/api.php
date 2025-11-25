@@ -13,6 +13,7 @@ use App\Http\Controllers\SzabalyController;
 use App\Http\Controllers\FoglaltsagController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\BeallitasController;
+use App\Http\Controllers\CsoportController;
 use App\Http\Controllers\KorabbiEvController;
 use App\Http\Controllers\SzervezoController;
 use App\Http\Controllers\VersenyszamController;
@@ -113,20 +114,34 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware(['auth:sanctum', 'admin'])->group(function () {
 
     // Felhasználók kezelése
-    Route::get('/admin/users', [UserController::class, 'index']);
-    Route::post('/users', [UserController::class, 'store']);
-    Route::put('/users/{id}', [UserController::class, 'update']);
-    Route::put('/users/{id}/csoportok', [UserController::class, 'updateCsoportok']); // ⬅️ FIX
+Route::get('/admin/users', [UserController::class, 'index']);
+Route::post('/users', [UserController::class, 'store']);
+Route::put('/users/{id}', [UserController::class, 'update']);
+Route::put('/users/{id}/csoportok', [UserController::class, 'updateCsoportok']);
 
-    // Csoport létrehozása
-    Route::post('/csoportok', function (Request $request) {
-        $validated = $request->validate([
-            'nev' => 'required|string|max:255|unique:csoportoks,nev'
-        ]);
-        $csoport = Csoportok::create($validated);
-        return response()->json($csoport, 201);
-    });
+// Csoport létrehozása
+Route::post('/csoportok', function (Request $request) {
+    $validated = $request->validate([
+        'nev' => 'required|string|max:255|unique:csoportoks,nev'
+    ]);
+    $csoport = Csoportok::create($validated);
+    return response()->json($csoport, 201);
+});
 
+// ✅ FONTOS: A specifikus route-okat előre kell tenni!
+Route::put('/csoportok/sorrend', [CsoportController::class, 'updateSorrend']);
+
+// Csoport átnevezése - ezt a végére tesszük
+Route::put('/csoportok/{id}', function (Request $request, $id) {
+    $validated = $request->validate([
+        'nev' => 'required|string|max:255|unique:csoportoks,nev,' . $id
+    ]);
+    
+    $csoport = Csoportok::findOrFail($id);
+    $csoport->update($validated);
+    
+    return response()->json($csoport);
+});
     // Kezdő dátum beállítása
     Route::post('/kezdo-datum', [MenuController::class, 'updateKezdoDatum']);
     Route::post('/beallitas/kezdo-datum', [BeallitasController::class, 'setKezdoDatum']);

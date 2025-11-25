@@ -13,7 +13,8 @@ return new class extends Migration
 {
     Schema::create('csoportoks', function (Blueprint $table) {
         $table->id();
-        $table->string('nev')->unique(); 
+        $table->string('nev')->unique();
+        $table->integer('sorrend')->default(0);
         $table->timestamps();
     });
 }
